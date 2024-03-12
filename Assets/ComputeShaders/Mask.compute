@@ -1,0 +1,14 @@
+#pragma kernel CSMain
+
+Texture2D<float4> InputTexture;
+RWTexture2D<float4> ResultTexture;
+
+[numthreads(8, 8, 1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    float4 pixel = InputTexture.Load(int3(id.xy, 0));
+    
+    // Check brightness and modify pixel color accordingly
+    // float brightness = dot(pixel.rgb, float3(0.299, 0.587, 0.114));
+    ResultTexture[id.xy] = pixel.w > 0.5 ? float4(1.0, 1.0, 1.0, 1.0) : float4(0.0, 0.0, 0.0, 1.0);
+}
