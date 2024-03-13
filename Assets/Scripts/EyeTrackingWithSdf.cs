@@ -28,16 +28,16 @@ public class EyeTrackingWithSdf : MonoBehaviour
     ScalarTextureToSdfTextureProcedure sdfGenerator;
 
     
-    public Vector2 screenPosition;
-    public GameObject wall;
-    
+    // public Vector2 screenPosition;
+    // public GameObject wall;
+    //
     private Camera cam;
     private RenderTexture rt;
     private RenderTexture rtCubemap;
     
-    public LayerMask layerMask;
-    public Color color;
-    // public Transform eye;
+    // public LayerMask layerMask;
+    // public Color color;
+    // // public Transform eye;
     public float value;
     
     void Awake()
@@ -48,7 +48,7 @@ public class EyeTrackingWithSdf : MonoBehaviour
         tempRt = new RenderTexture(rt.width, rt.height, 0, RenderTextureFormat.ARGB32);
         tempRt.enableRandomWrite = true; // Enable UAV usage
         tempRt.Create();
-
+        value = 1f;
     }
     
     private void Start()
@@ -76,11 +76,11 @@ public class EyeTrackingWithSdf : MonoBehaviour
     
     void Update()
     {
-        if (imageType == ImageType.Spherical)
-        {
-            cam.RenderToCubemap(rtCubemap);
-            rtCubemap.ConvertToEquirect(rt, Camera.MonoOrStereoscopicEye.Mono);
-        }
+        // if (imageType == ImageType.Spherical)
+        // {
+        //     cam.RenderToCubemap(rtCubemap);
+        //     rtCubemap.ConvertToEquirect(rt, Camera.MonoOrStereoscopicEye.Mono);
+        // }
         
         int kernelHandle = binaryImageShader.FindKernel("CSMain");
         
@@ -118,14 +118,16 @@ public class EyeTrackingWithSdf : MonoBehaviour
 
         RenderTexture current = RenderTexture.active;
         
-        RenderTexture.active = rt;
+        RenderTexture.active = sdfGenerator.sdfTexture;
         Texture2D tex = new Texture2D(rt.width, rt.height, TextureFormat.RFloat, false);
         tex.ReadPixels(new Rect(0, 0, rt.width, rt.height), 0, 0);
         tex.Apply();
-        color = tex.GetPixel(rt.width/2, rt.height/2); //get center value, center is the direction of gaze.
-
-        // RenderTexture.active = current;
-        value = color.r;
+        value = tex.GetPixel(rt.width/2, rt.height/2).r; //get center value, center is the direction of gaze.
+        
+        RenderTexture.active = current;
+        Destroy(tex);
+        tex = null;
+        // value = color.r; // 이 값이 왜 음수가 안나오니;
     }
 
     private void LateUpdate()

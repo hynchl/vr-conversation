@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ public class AvatarRecordingHandler : MonoBehaviour
     [TextArea]
     public string description;
     public RemoteRecorder remoteRecorder;
-    public AvatarRecorder selfRecorder;
+    public SelfRecorder selfRecorder;
     
     public void AddToRecorder()
     {
@@ -22,6 +23,7 @@ public class AvatarRecordingHandler : MonoBehaviour
     
     public void AddToSelfRecorder()
     {
+        Debug.Log("ADD TO SELF RECORDER");
         selfRecorder.tfs.Add(transform.Find("Joint Head"));
         selfRecorder.tfs.Add(transform.Find("Joint Hips"));
         selfRecorder.tfs.Add(transform.Find("Joint Chest"));

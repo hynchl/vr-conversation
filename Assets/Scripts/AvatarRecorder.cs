@@ -59,6 +59,11 @@ public class AvatarRecorder : ExpRecorder
         recorder.Add<object>(result);
 
     }
+    
+    private void OnDisable()
+    {
+        recorder.Save();
+    }
 
     private void OnDestroy()
     {

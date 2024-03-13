@@ -12,7 +12,8 @@ public class VideoHandler : MonoBehaviour
     private VideoPlayer vp;
     public Slider slider;
     public VideoRecorder videoRecorder;
-
+    public bool pressed;
+    
     private void Awake()
     {
         vp = GetComponent<VideoPlayer>();
@@ -26,7 +27,7 @@ public class VideoHandler : MonoBehaviour
         if (currentFrame == -1) return;
         
         
-        slider.value = (float)(vp.time / vp.clip.length);
+        slider.value = (float)(vp.time / vp.length);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -36,6 +37,7 @@ public class VideoHandler : MonoBehaviour
             }
             else
             {
+
                 PlayVideo();
             }
         }
@@ -52,12 +54,13 @@ public class VideoHandler : MonoBehaviour
     public void MoveTo()
     {
         if (!vp.isPrepared) return;
+        if (!pressed) return;
         
         int currentFrame = (int)vp.frame;
         if (currentFrame == -1) return;
         if (currentFrame >= (int)vp.frameCount) return;
         
-        vp.time = ((float)vp.clip.length) * slider.value;
+        vp.time = ((float)vp.length) * slider.value;
         
         if (videoRecorder != null)
         {

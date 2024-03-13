@@ -9,6 +9,7 @@ using Unity.WebRTC;
 using MemoryPack;
 using Oculus.Avatar2;
 using Unity.Collections;
+using UnityEngine.Serialization;
 
 namespace RTC
 {
@@ -20,6 +21,7 @@ namespace RTC
             // public Vector3 position;
             // public Quaternion rotation;
             public Dictionary<string, float> faceExpressions;
+            public Dictionary<string, float> eyeData;
             public byte[] pose;
         }
         
@@ -67,7 +69,8 @@ namespace RTC
         public bool useAvatar = true;
         public OVRFaceExpressions faceExpressions;
         public AvatarPack currentAvatarState;
-        
+        public EyeTrackingWithSdf[] eyeTrackingWithSdfs;
+        public SelfRecorder selfRecorder;
         void Start()
         {
             currentAvatarState = new AvatarPack();
@@ -84,6 +87,9 @@ namespace RTC
             
             CaptureAudioStart();
             OnCall();
+            
+            //
+            eyeTrackingWithSdfs = FindObjectsOfType<EyeTrackingWithSdf>();
         }
 
         void OnCall()
@@ -100,7 +106,7 @@ namespace RTC
                 
             if (useAvatar)
             {
-                Debug.Log("useAvatar");
+                // Debug.Log("useAvatar");
                 SendAvatarPose();
             }
             
@@ -155,17 +161,17 @@ namespace RTC
             if (Input.GetKeyUp(KeyCode.R))
             {
                 socket.Emit("start", "null");
-                Debug.Log("yes1");
+                Debug.Log("Recording is started.");
             }
 
             if (Input.GetKeyUp(KeyCode.Q))
             {
                 socket.Emit("end", "null");
-            Debug.Log("yes2");
+            Debug.Log("Recording is done.");
                 
             }
             
-            if (Input.GetKeyUp(KeyCode.V))
+            if (Input.GetKeyUp(KeyCode.Alpha3))
             {
                 socket.Emit("evaluation", "null");
                 Debug.Log("yes3");
@@ -409,10 +415,9 @@ namespace RTC
                 remoteDataChannels[dest].OnMessage = (bytes) =>
                 {
                     AvatarPack ap = MemoryPackSerializer.Deserialize<AvatarPack>(bytes);
-                    currentAvatarState.faceExpressions = ap.faceExpressions;
-                    currentAvatarState.isValidFaceExpressions = ap.isValidFaceExpressions;
-                    remoteAvatars[dest][0].transform.parent.GetComponent<RemoteRecorder>().SetAvatar(ap);
+                    remoteAvatars[dest][0].transform.parent.GetComponent<RemoteRecorder>().UpdateRemoteInfo(ap);
                     NativeArray<byte> _pose = new NativeArray<byte>(ap.pose, Allocator.Temp);
+                    
                     //
                     // if (ap.position != null)
                     //     remoteAvatars[dest][0].transform.parent.transform.position = ap.position;
@@ -429,7 +434,7 @@ namespace RTC
                             {
                                 if (remoteAvatars[dest][i].isLoaded)
                                 {
-                                    Log(remoteAvatars[dest][i].activeStreamLod.ToString());
+                                    // Log(remoteAvatars[dest][i].activeStreamLod.ToString());
                                     remoteAvatars[dest][i].ApplyStreamData(_pose);
                                 }
                             }
@@ -488,7 +493,7 @@ namespace RTC
         public Dictionary<string, float> GetFaceExpressionWeights()
         {
             Dictionary<string, float> result = new Dictionary<string, float>();
-            result["timestamp"] = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            result["timestamp.FACE"] = DateTimeOffset.Now.ToUnixTimeMilliseconds();
 
             if (faceExpressions.FaceTrackingEnabled && faceExpressions.ValidExpressions)
             {
@@ -501,6 +506,27 @@ namespace RTC
 
             return result;
         }
+
+        public Dictionary<string, float> GetEyeTrackingData()
+        {
+            Dictionary<string, float> result = new Dictionary<string, float>();
+            result["timestamp.EYE"] = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            
+            // 가져오기
+            foreach (EyeTrackingWithSdf e in eyeTrackingWithSdfs)
+            {
+                string name = e.gameObject.name;
+                result[$"EYE.{name}.position.x"] = e.transform.position.x;
+                result[$"EYE.{name}.position.y"] = e.transform.position.x;
+                result[$"EYE.{name}.position.z"] = e.transform.position.x;
+                result[$"EYE.{name}.rotation.x"] = e.transform.rotation.x;
+                result[$"EYE.{name}.rotation.y"] = e.transform.rotation.y;
+                result[$"EYE.{name}.rotation.z"] = e.transform.rotation.z;
+                result[$"EYE.{name}.distance"] = e.value;
+            }
+
+            return result;
+        }
         
         public void SendAvatarPose()
         {
@@ -508,13 +534,16 @@ namespace RTC
             
             OvrAvatarEntity.StreamLOD lod = OvrAvatarEntity.StreamLOD.High; //localAvatar.activeStreamLod;
             
-            Debug.Log($"sent avatar packets {lod}");
+            // Debug.Log($"sent avatar packets {lod}");
             NativeArray<byte> data = new NativeArray<byte>();
             
 
 
-            AvatarPack ap = new AvatarPack() { isValidFaceExpressions = faceExpressions.FaceTrackingEnabled && faceExpressions.ValidExpressions,
-                faceExpressions = GetFaceExpressionWeights()};
+            AvatarPack ap = new AvatarPack() { 
+                isValidFaceExpressions = faceExpressions.FaceTrackingEnabled && faceExpressions.ValidExpressions,
+                faceExpressions = GetFaceExpressionWeights(),
+                eyeData = GetEyeTrackingData()
+            };
             UInt32 dataByteCount = localAvatar.RecordStreamData_AutoBuffer(lod, ref data);
             ap.pose = data.ToArray();
             
@@ -528,6 +557,8 @@ namespace RTC
                     dc.Value.Send(bin);
                 }
             }
+
+            selfRecorder.avatarpack = ap;
             // dataChannel.Send(data);
         }
         
@@ -663,8 +694,6 @@ namespace RTC
             
             audioStreamTrack?.Dispose();
             audioStreamTrack = null;
-            // videoStreamTrack?.Dispose();
-            // videoStreamTrack = null;
 
             foreach (KeyValuePair<string, RTCPeerConnection> entry in pcs)
                 entry.Value.Dispose();

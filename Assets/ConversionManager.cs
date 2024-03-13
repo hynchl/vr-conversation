@@ -12,6 +12,7 @@ public class ConversionManager : MonoBehaviour
     public GameObject afterConversion;
     public VideoPlayer videoPlayer;
     private string mp4FileName;
+    private string latestMkvFile;
     public bool done;
     
     void Start()
@@ -20,7 +21,7 @@ public class ConversionManager : MonoBehaviour
         
 
         // 최신 mkv 파일 찾기
-        string latestMkvFile = Directory.GetFiles(folderPath, "*.mkv")
+        latestMkvFile = Directory.GetFiles(folderPath, "*.mkv")
             .OrderByDescending(f => new FileInfo(f).CreationTime)
             .FirstOrDefault();
         UnityEngine.Debug.Log(latestMkvFile);
@@ -55,7 +56,7 @@ public class ConversionManager : MonoBehaviour
     {
         if (done)
         {
-            videoPlayer.url = mp4FileName;
+            videoPlayer.url = Path.ChangeExtension(latestMkvFile, ".mp4");;
             afterConversion.SetActive(true);
             gameObject.SetActive(false);
         }
@@ -63,8 +64,6 @@ public class ConversionManager : MonoBehaviour
 
     private void ProcessExited(object sender, EventArgs e)
     {
-
-        UnityEngine.Debug.Log("hey");
         done = true;
     }
 }

@@ -42,13 +42,18 @@ public class EyeTrackingRecorder : ExpRecorder
         
         foreach (var et in ets)
         {
-            result[$"dist/{GetHierarchyPath(et.gameObject)}"] = et.value.ToString("F6");
+            result[$"dist/{et.gameObject.name}"] = et.value.ToString("F6");
         }
         
         recorder.Add<object>(result);
 
     }
 
+    private void OnDisable()
+    {
+        recorder.Save();
+    }
+    
     private void OnDestroy()
     {
         recorder.Save();

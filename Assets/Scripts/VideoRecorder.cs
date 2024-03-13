@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,28 +25,36 @@ public class VideoRecorder : MonoBehaviour
     
     public void Start()
     {
+        vp = GetComponent<VideoPlayer>();
         recorder = new Recorder("Data/" + fileName + ".tsv");
+        vp.Prepare();
         vp.prepareCompleted += OnVideoPrepared;
     }
 
     public void OnVideoPrepared(VideoPlayer vp)
     {
-        Debug.Log($"frameCount : {vp.clip.frameCount}");
+        Debug.Log($"frameCount : {vp.frameCount}");
 
 
-        if (vp.clip.frameCount < 1)
+        if (vp.frameCount < 1)
         {
             Debug.LogError("Video Clip is not loaded.");  
         }
         
-        scoresSC = Enumerable.Repeat(-1f, (int)vp.clip.frameCount).ToArray();
-        scoresSP = Enumerable.Repeat(-1f, (int)vp.clip.frameCount).ToArray();
-        SCsManipulated = new bool[(int)vp.clip.frameCount];
-        SPsManipulated = new bool[(int)vp.clip.frameCount];
+        scoresSC = Enumerable.Repeat(-1f, (int)vp.frameCount).ToArray();
+        scoresSP = Enumerable.Repeat(-1f, (int)vp.frameCount).ToArray();
+        SCsManipulated = new bool[(int)vp.frameCount];
+        SPsManipulated = new bool[(int)vp.frameCount];
         
         
     }
-    
+
+    // public void Update()
+    // {
+    //     Debug.Log($"frameCount : {vp.frameCount}");
+    //
+    // }
+
 
     public void Complete()
     {
@@ -71,7 +80,6 @@ public class VideoRecorder : MonoBehaviour
     public void Add()
     {
         int currentFrame = (int)vp.frame;
-        
         
         scoresSC[currentFrame] = scoreSocialConnection.value;
         SCsManipulated[currentFrame] = true;

@@ -4,8 +4,7 @@ using UnityEngine;
 using System;
 using RTC;
 
-
-public class RemoteRecorder : ExpRecorder
+public class SelfRecorder : ExpRecorder
 {
     public Recorder recorder;
     [SerializeField]
@@ -22,7 +21,7 @@ public class RemoteRecorder : ExpRecorder
         avatarpack = new AvatarPack();
         recorder = new Recorder("Data/" + GameManager.instance.sessionId + "_" + fileName + ".tsv");
         tfs = new List<Transform>();
-        arh.AddToRecorder();
+        arh.AddToSelfRecorder();
     }
 
     public void UpdateRemoteInfo(AvatarPack ap)
@@ -69,6 +68,7 @@ public class RemoteRecorder : ExpRecorder
 
         if (avatarpack.eyeData != null)
         {
+            Debug.Log(avatarpack.eyeData.Count);
             foreach (var pair in avatarpack.eyeData)
             {
                 result[pair.Key] = pair.Value.ToString("F6");

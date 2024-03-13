@@ -54,8 +54,12 @@ public class Recorder
 
         // Write the header row.
         // var header = this.rows[this.rows.Count-1].Keys;
-        content.AppendLine(string.Join(delimiter, header));
-
+        bool fileExists = File.Exists(filePath);
+        // content.AppendLine(string.Join(delimiter, header));
+        if (!fileExists)
+        {
+            content.AppendLine(string.Join(delimiter, header));
+        }
         foreach (Dictionary<string, string> row in rows)
         {
             var values = new List<string>();
@@ -69,7 +73,15 @@ public class Recorder
         }
 
         // Write the content to a file.
-        File.WriteAllText(filePath, content.ToString());
+        if (fileExists)
+        {
+            File.AppendAllText(filePath, content.ToString());
+        }
+        else
+        {
+            File.WriteAllText(filePath, content.ToString());
+        }
+        // File.WriteAllText(filePath, content.ToString());
         Debug.Log("file saved to: " + filePath);
     }
 
@@ -98,7 +110,7 @@ public class Recorder
                 path = path.Substring(0, path.LastIndexOf('/'));
                 return Path.Combine(path, "Assets", "Resources/");
             default:
-                path = Application.dataPath;
+                path = Application.streamingAssetsPath;
                 path = path.Substring(0, path.LastIndexOf('/'));
                 return Path.Combine(path, "Resources/");
         }
