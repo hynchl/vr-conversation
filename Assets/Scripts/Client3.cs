@@ -20,7 +20,7 @@ namespace RTC
             // public Vector3 position;
             // public Quaternion rotation;
             public Dictionary<string, float> faceExpressions;
-            public NativeArray<byte> pose;
+            public byte[] pose;
         }
         
     public class Client3 : MonoBehaviour
@@ -408,11 +408,11 @@ namespace RTC
                 remoteAvatars[dest][0].transform.parent.GetComponent<RemoteRecorder>().fileName = $"remote_{dest}";
                 remoteDataChannels[dest].OnMessage = (bytes) =>
                 {
-                    // AvatarPack ap = MemoryPackSerializer.Deserialize<AvatarPack>(bytes);
-                    // currentAvatarState.faceExpressions = ap.faceExpressions;
-                    // currentAvatarState.isValidFaceExpressions = ap.isValidFaceExpressions;
-                    // remoteAvatars[dest][0].transform.parent.GetComponent<RemoteRecorder>().SetAvatar(bytes);
-                    
+                    AvatarPack ap = MemoryPackSerializer.Deserialize<AvatarPack>(bytes);
+                    currentAvatarState.faceExpressions = ap.faceExpressions;
+                    currentAvatarState.isValidFaceExpressions = ap.isValidFaceExpressions;
+                    remoteAvatars[dest][0].transform.parent.GetComponent<RemoteRecorder>().SetAvatar(ap);
+                    NativeArray<byte> _pose = new NativeArray<byte>(ap.pose, Allocator.Temp);
                     //
                     // if (ap.position != null)
                     //     remoteAvatars[dest][0].transform.parent.transform.position = ap.position;
@@ -430,7 +430,7 @@ namespace RTC
                                 if (remoteAvatars[dest][i].isLoaded)
                                 {
                                     Log(remoteAvatars[dest][i].activeStreamLod.ToString());
-                                    remoteAvatars[dest][i].ApplyStreamData(bytes);
+                                    remoteAvatars[dest][i].ApplyStreamData(_pose);
                                 }
                             }
                         }
@@ -509,13 +509,15 @@ namespace RTC
             OvrAvatarEntity.StreamLOD lod = OvrAvatarEntity.StreamLOD.High; //localAvatar.activeStreamLod;
             
             Debug.Log($"sent avatar packets {lod}");
-            // NativeArray<byte> data = new NativeArray<byte>();
+            NativeArray<byte> data = new NativeArray<byte>();
+            
 
 
-            AvatarPack ap = new AvatarPack() { pose = new NativeArray<byte>(), 
-                isValidFaceExpressions = faceExpressions.FaceTrackingEnabled && faceExpressions.ValidExpressions,
+            AvatarPack ap = new AvatarPack() { isValidFaceExpressions = faceExpressions.FaceTrackingEnabled && faceExpressions.ValidExpressions,
                 faceExpressions = GetFaceExpressionWeights()};
-            UInt32 dataByteCount = localAvatar.RecordStreamData_AutoBuffer(lod, ref ap.pose);
+            UInt32 dataByteCount = localAvatar.RecordStreamData_AutoBuffer(lod, ref data);
+            ap.pose = data.ToArray();
+            
             Debug.Assert(dataByteCount > 0);
             var bin = MemoryPackSerializer.Serialize(ap);
             
@@ -523,7 +525,7 @@ namespace RTC
             {
                 if (dc.Value.ReadyState == RTCDataChannelState.Open)
                 {
-                    dc.Value.Send(ap.pose);
+                    dc.Value.Send(bin);
                 }
             }
             // dataChannel.Send(data);
