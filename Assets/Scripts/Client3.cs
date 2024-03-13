@@ -408,10 +408,10 @@ namespace RTC
                 remoteAvatars[dest][0].transform.parent.GetComponent<RemoteRecorder>().fileName = $"remote_{dest}";
                 remoteDataChannels[dest].OnMessage = (bytes) =>
                 {
-                    AvatarPack ap = MemoryPackSerializer.Deserialize<AvatarPack>(bytes);
-                    currentAvatarState.faceExpressions = ap.faceExpressions;
-                    currentAvatarState.isValidFaceExpressions = ap.isValidFaceExpressions;
-                    remoteAvatars[dest][0].transform.parent.GetComponent<RemoteRecorder>().SetAvatar(ap);
+                    // AvatarPack ap = MemoryPackSerializer.Deserialize<AvatarPack>(bytes);
+                    // currentAvatarState.faceExpressions = ap.faceExpressions;
+                    // currentAvatarState.isValidFaceExpressions = ap.isValidFaceExpressions;
+                    // remoteAvatars[dest][0].transform.parent.GetComponent<RemoteRecorder>().SetAvatar(bytes);
                     
                     //
                     // if (ap.position != null)
@@ -430,7 +430,7 @@ namespace RTC
                                 if (remoteAvatars[dest][i].isLoaded)
                                 {
                                     Log(remoteAvatars[dest][i].activeStreamLod.ToString());
-                                    remoteAvatars[dest][i].ApplyStreamData(ap.pose);
+                                    remoteAvatars[dest][i].ApplyStreamData(bytes);
                                 }
                             }
                         }
@@ -523,7 +523,7 @@ namespace RTC
             {
                 if (dc.Value.ReadyState == RTCDataChannelState.Open)
                 {
-                    dc.Value.Send(bin);
+                    dc.Value.Send(ap.pose);
                 }
             }
             // dataChannel.Send(data);
