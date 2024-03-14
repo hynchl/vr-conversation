@@ -56,7 +56,7 @@ public class ConversionManager : MonoBehaviour
     {
         if (done)
         {
-            videoPlayer.url = Path.ChangeExtension(latestMkvFile, ".mp4");;
+            videoPlayer.url = Path.ChangeExtension(latestMkvFile, ".mov");;
             afterConversion.SetActive(true);
             gameObject.SetActive(false);
         }
