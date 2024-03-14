@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8513106657200957379}
   - component: {fileID: 1061872729464885054}
+  - component: {fileID: 3143925277612166345}
   m_Layer: 0
   m_Name: Remote Avatar
   m_TagString: Untagged
@@ -49,6 +50,18 @@ MonoBehaviour:
   fileName: 
   arh: {fileID: 56422358660809977}
   tfs: []
+--- !u!114 &3143925277612166345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7316255770931661848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7632840029ca40e4e9a0df5e3aa1023e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4921437315497955464
 PrefabInstance:
   m_ObjectHideFlags: 0
