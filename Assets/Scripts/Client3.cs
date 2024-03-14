@@ -418,12 +418,6 @@ namespace RTC
                     remoteAvatars[dest][0].transform.parent.GetComponent<RemoteRecorder>().UpdateRemoteInfo(ap);
                     NativeArray<byte> _pose = new NativeArray<byte>(ap.pose, Allocator.Temp);
                     
-                    //
-                    // if (ap.position != null)
-                    //     remoteAvatars[dest][0].transform.parent.transform.position = ap.position;
-                    // if (ap.rotation != null) 
-                    //     remoteAvatars[dest][0].transform.parent.transform.rotation = ap.rotation;
-                    //
                     
                     if (useAvatar)
                     {
@@ -647,7 +641,8 @@ namespace RTC
             {
                 offerSocketId = currentDest,
                 answerSocketId = socketId,
-                answer = desc
+                answer = desc,
+                avatarIndex = GameManager.instance.selectedAvatar
             };
             
             socket.Emit("answer", answer);
