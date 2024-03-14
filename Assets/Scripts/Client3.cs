@@ -18,8 +18,8 @@ namespace RTC
     public partial class AvatarPack
         {
             public bool isValidFaceExpressions;
-            // public Vector3 position;
-            // public Quaternion rotation;
+            public Vector3 position;
+            public Quaternion rotation;
             public Dictionary<string, float> faceExpressions;
             public Dictionary<string, float> eyeData;
             public byte[] pose;
@@ -429,6 +429,8 @@ namespace RTC
                                 if (remoteAvatars[dest][i].isLoaded)
                                 {
                                     // Log(remoteAvatars[dest][i].activeStreamLod.ToString());
+                                    remoteAvatars[dest][i].transform.position = ap.position;
+                                    remoteAvatars[dest][i].transform.rotation = ap.rotation;
                                     remoteAvatars[dest][i].ApplyStreamData(_pose);
                                 }
                             }
@@ -536,7 +538,9 @@ namespace RTC
             AvatarPack ap = new AvatarPack() { 
                 isValidFaceExpressions = faceExpressions.FaceTrackingEnabled && faceExpressions.ValidExpressions,
                 faceExpressions = GetFaceExpressionWeights(),
-                eyeData = GetEyeTrackingData()
+                eyeData = GetEyeTrackingData(),
+                position = localAvatar.transform.position,
+                rotation = localAvatar.transform.rotation,
             };
             UInt32 dataByteCount = localAvatar.RecordStreamData_AutoBuffer(lod, ref data);
             ap.pose = data.ToArray();
