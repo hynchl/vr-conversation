@@ -35,7 +35,7 @@ def save_to_file():
 	
 	with open(full_path, "w") as f:
 		log = log.reshape((-1,3))
-		np.savetxt(f, log, delimiter=',', fmt=["%i", "%f.4", "%f.4"], comments='')
+		np.savetxt(f, log, delimiter=',', fmt=["%i", "%.4f", "%.4f"], comments='')
 		print("Saved successfully at {}".format(full_path))
 
 	output = obs.obs_frontend_get_recording_output()
