@@ -110,7 +110,7 @@ public class Recorder
                 path = path.Substring(0, path.LastIndexOf('/'));
                 return Path.Combine(path, "Assets", "Resources/");
             default:
-                path = Application.streamingAssetsPath;
+                path = Application.dataPath;
                 path = path.Substring(0, path.LastIndexOf('/'));
                 return Path.Combine(path, "Resources/");
         }

@@ -75,6 +75,7 @@ namespace RTC
         {
             currentAvatarState = new AvatarPack();
             avatarIndices = new Dictionary<string, int>();
+            receivedAudios = new Dictionary<string, AudioSource>();
             // IMPORTANT
             StartCoroutine(WebRTC.Update());
             pcs = new Dictionary<string, RTCPeerConnection>();
@@ -314,6 +315,17 @@ namespace RTC
                     break;
                 case RTCIceConnectionState.Disconnected:
                     Log($"IceConnectionState: Disconnected");
+                    
+                    // Remove RTC client receier objects
+                    Log(pcName);
+                    GameObject _go = receivedAudios[pcName].gameObject;
+                    receivedAudios[pcName] = null;
+                    Destroy(_go);
+                    
+                    _go = remoteAvatars[pcName][0].transform.parent.gameObject;
+                    remoteAvatars[pcName] = null;
+                    Destroy(_go);
+                    
                     break;
                 case RTCIceConnectionState.Failed:
                     Log($"IceConnectionState: Failed");
@@ -356,8 +368,8 @@ namespace RTC
             };
             
             // for debugging
-            // pc.OnIceConnectionChange = state => { OnIceConnectionChange(pc, state);};
-            pc.OnIceConnectionChange = state => { Log($"The current ICEConnection state is <b>{state}</b>"); };
+            pc.OnIceConnectionChange = state => { OnIceConnectionChange(pc, state);};
+            // pc.OnIceConnectionChange = state => { Log($"The current ICEConnection state is <b>{state}</b>"); };
             pc.OnConnectionStateChange = state => { Log($"The current connection state is <b>{state}</b>"); };
 
             pc.OnTrack = e =>
@@ -394,7 +406,7 @@ namespace RTC
                     go.GetComponent<AudioSource>().Play();
                     Log("An audioTrack was added.", go);
 
-                    // receivedAudios[dest] = go.GetComponent<AudioSource>();
+                    receivedAudios[dest] = go.GetComponent<AudioSource>();
                 }
             };
 
@@ -496,7 +508,7 @@ namespace RTC
                 for (int i = 0; i < 70; i++)
                 {
                     OVRFaceExpressions.FaceExpression fe = (OVRFaceExpressions.FaceExpression)i;
-                    result[fe.ToString()] = faceExpressions.GetWeight(fe);
+                    result["FACE." + fe.ToString()] = faceExpressions.GetWeight(fe);
                 }
             }
 
@@ -518,6 +530,7 @@ namespace RTC
                 result[$"EYE.{name}.rotation.x"] = e.transform.rotation.x;
                 result[$"EYE.{name}.rotation.y"] = e.transform.rotation.y;
                 result[$"EYE.{name}.rotation.z"] = e.transform.rotation.z;
+                result[$"EYE.{name}.confidence.x"] = e.GetComponent<OVREyeGaze>().Confidence;
                 result[$"EYE.{name}.distance"] = e.value;
             }
 

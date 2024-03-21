@@ -15,13 +15,14 @@ public class SelfRecorder : ExpRecorder
     public AvatarPack avatarpack;
     public List<Transform> tfs;
     // Start is called before the first frame update
-
+    public TMPro.TMP_Text text;
+    
     void Start()
     {
         avatarpack = new AvatarPack();
         recorder = new Recorder("Data/" + GameManager.instance.sessionId + "_" + fileName + ".tsv");
         tfs = new List<Transform>();
-        arh.AddToSelfRecorder();
+        // arh.AddToSelfRecorder();
     }
 
     public void UpdateRemoteInfo(AvatarPack ap)
@@ -46,16 +47,17 @@ public class SelfRecorder : ExpRecorder
     void LateUpdate()
     {
         Dictionary<string, object> result = new Dictionary<string, object>();
-        
-
+        result["timestamp"] = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
+        text.text = $"POSE.{tfs[0].gameObject.name}.position.x";
         foreach (var tf in tfs)
         {
-            result[$"POSE.{tf.gameObject.name.Split(" ")[1]}.position.x"] = tf.position.x.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name.Split(" ")[1]}.position.y"] = tf.position.y.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name.Split(" ")[1]}.position.z"] = tf.position.z.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name.Split(" ")[1]}.rotation.x"] = tf.eulerAngles.x.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name.Split(" ")[1]}.rotation.x"] = tf.eulerAngles.y.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name.Split(" ")[1]}.rotation.x"] = tf.eulerAngles.z.ToString("F6"); // global
+            
+            result[$"POSE.{tf.gameObject.name}.position.x"] = tf.position.x.ToString("F6"); // global
+            result[$"POSE.{tf.gameObject.name}.position.y"] = tf.position.y.ToString("F6"); // global
+            result[$"POSE.{tf.gameObject.name}.position.z"] = tf.position.z.ToString("F6"); // global
+            result[$"POSE.{tf.gameObject.name}.rotation.x"] = tf.eulerAngles.x.ToString("F6"); // global
+            result[$"POSE.{tf.gameObject.name}.rotation.x"] = tf.eulerAngles.y.ToString("F6"); // global
+            result[$"POSE.{tf.gameObject.name}.rotation.x"] = tf.eulerAngles.z.ToString("F6"); // global
         }
         
         if (avatarpack.isValidFaceExpressions)
@@ -75,7 +77,7 @@ public class SelfRecorder : ExpRecorder
             }
         }
         
-        result["timestamp"] = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
+        
 
         recorder.Add<object>(result);
     }
