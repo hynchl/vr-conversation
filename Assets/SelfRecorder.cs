@@ -14,6 +14,9 @@ public class SelfRecorder : ExpRecorder
     
     public AvatarPack avatarpack;
     public List<Transform> tfs;
+
+    public Dictionary<string, Transform> joints;
+    
     // Start is called before the first frame update
     public TMPro.TMP_Text text;
     
@@ -22,6 +25,7 @@ public class SelfRecorder : ExpRecorder
         avatarpack = new AvatarPack();
         recorder = new Recorder("Data/" + GameManager.instance.sessionId + "_" + fileName + ".tsv");
         tfs = new List<Transform>();
+        joints = new Dictionary<string, Transform>();
         // arh.AddToSelfRecorder();
     }
 
@@ -47,17 +51,16 @@ public class SelfRecorder : ExpRecorder
     void LateUpdate()
     {
         Dictionary<string, object> result = new Dictionary<string, object>();
-        result["timestamp"] = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
-        text.text = $"POSE.{tfs[0].gameObject.name}.position.x";
-        foreach (var tf in tfs)
+        result["POSE.timestamp"] = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
+
+        foreach (KeyValuePair<string, Transform> pair in joints)
         {
-            
-            result[$"POSE.{tf.gameObject.name}.position.x"] = tf.position.x.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name}.position.y"] = tf.position.y.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name}.position.z"] = tf.position.z.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name}.rotation.x"] = tf.eulerAngles.x.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name}.rotation.x"] = tf.eulerAngles.y.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name}.rotation.x"] = tf.eulerAngles.z.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.position.x"] = pair.Value.position.x.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.position.y"] = pair.Value.position.y.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.position.z"] = pair.Value.position.z.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.rotation.x"] = pair.Value.eulerAngles.x.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.rotation.y"] = pair.Value.eulerAngles.y.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.rotation.z"] = pair.Value.eulerAngles.z.ToString("F6"); // global
         }
         
         if (avatarpack.isValidFaceExpressions)

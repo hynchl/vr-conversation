@@ -9358,7 +9358,6 @@ MonoBehaviour:
   avatarEntities:
   - {fileID: 964026243}
   - {fileID: 37084469}
-  - {fileID: 0}
   expOperator: {fileID: 478257972}
   conversationGroup: {fileID: 1645265084}
   preExperimentGroup: {fileID: 920810878}

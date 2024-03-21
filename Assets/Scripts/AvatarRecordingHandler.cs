@@ -14,6 +14,7 @@ public class AvatarRecordingHandler : MonoBehaviour
     
     public void AddToRecorder()
     {
+        // remote에도 적용해야지
         remoteRecorder.tfs.Add(transform.Find("Joint Head"));
         remoteRecorder.tfs.Add(transform.Find("Joint Hips"));
         remoteRecorder.tfs.Add(transform.Find("Joint Chest"));
@@ -24,19 +25,12 @@ public class AvatarRecordingHandler : MonoBehaviour
     
     public void AddToSelfRecorder()
     {
-        Debug.Log("ADD TO SELF RECORDER");
-        
         SampleAvatarEntity sae = GetComponent<SampleAvatarEntity>();
-        selfRecorder.tfs.Add(sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.Head));
-        selfRecorder.tfs.Add(sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.Hips));
-        selfRecorder.tfs.Add(sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.Chest));
-        selfRecorder.tfs.Add(sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.LeftHandWrist));
-        selfRecorder.tfs.Add(sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.RightHandWrist));
+        selfRecorder.joints["Head"] = sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.Head);
+        selfRecorder.joints["Hips"] = sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.Hips);
+        selfRecorder.joints["Chest"] = sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.Chest);
+        selfRecorder.joints["LeftHandWrist"] = sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.LeftHandWrist);
+        selfRecorder.joints["RightHandWrist"] = sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.RightHandWrist);
 
-        // selfRecorder.tfs.Add(transform.Find("Joint Head"));
-        // selfRecorder.tfs.Add(transform.Find("Joint Hips"));
-        // selfRecorder.tfs.Add(transform.Find("Joint Chest"));
-        // selfRecorder.tfs.Add(transform.Find("Joint LeftHandWrist"));
-        // selfRecorder.tfs.Add(transform.Find("Joint RightHandWrist"));
     }
 }

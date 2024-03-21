@@ -33,7 +33,6 @@ public class Recorder
         {
            this.header = row.Keys.ToList();
         }
-
         
         if (rows.Count >= chunkLength) {
             Save();
