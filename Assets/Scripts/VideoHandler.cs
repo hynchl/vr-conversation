@@ -53,8 +53,7 @@ public class VideoHandler : MonoBehaviour
 
     public void MoveTo()
     {
-        if (!vp.isPrepared) return;
-        if (!pressed) return;
+        if (!vp.isPrepared || !pressed) return;
         
         int currentFrame = (int)vp.frame;
         if (currentFrame == -1) return;
@@ -64,6 +63,7 @@ public class VideoHandler : MonoBehaviour
         
         if (videoRecorder != null)
         {
+            Debug.Log(currentFrame);
             videoRecorder.scoreSocialConnection.value = videoRecorder.scoresSC[currentFrame];
             videoRecorder.scoreSocialPresence.value = videoRecorder.scoresSP[currentFrame]; 
         }

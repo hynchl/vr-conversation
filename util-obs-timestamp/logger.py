@@ -2,6 +2,7 @@ import obspython as obs
 import time, sys, os, math
 import numpy as np
 import os.path
+import datetime
 
 # Export
 enabled = True
@@ -17,6 +18,9 @@ my_setting = None
 
 count = 0 #debugging
 
+# test text
+text_source = None
+source_name = None
 ###############################################################################
 # UTILS
 ###############################################################################
@@ -58,6 +62,7 @@ def recording_start_handler(_):
 		log = np.array([])
 
 		print("Start Recording at {start_time}".format(start_time=start_time_record))
+	count = 0
 
 def recording_stopped_handler(_):
 	global is_being_recorded
@@ -75,14 +80,28 @@ def recording_stopped_handler(_):
 def script_update(settings):
 	global file_name, folder_path, enabled, trigger
 	global my_setting
+	global source_name
+
 	enabled = obs.obs_data_get_bool(settings, "enabled")
 	trigger = obs.obs_data_get_string(settings, "trigger")
-	
+	source_name = obs.obs_data_get_string(settings, "source")
 	if(is_being_recorded):
 		# Don't change `enabled`
 		obs.obs_data_set_bool(settings, "enabled", enabled)
 	my_setting = settings
 
+
+def update_text():
+    global source_name
+
+    source = obs.obs_get_source_by_name(source_name)
+    if source is not None:
+        now = datetime.datetime.now()
+        settings = obs.obs_data_create()
+        obs.obs_data_set_string(settings, "text", f'{count} / {time.time()}')
+        obs.obs_source_update(source, settings)
+        obs.obs_data_release(settings)
+        obs.obs_source_release(source)
 
 def script_tick(seconds):
 	global is_being_recorded, start_time_record, log, count
@@ -92,7 +111,10 @@ def script_tick(seconds):
 	t = time.time() #- start_time_record
 	log = np.concatenate((log, np.array([count, t, 1/seconds])), axis=0)
 
+	update_text()
+
 	count += 1
+
 
 
 def script_description():
@@ -116,7 +138,18 @@ def script_properties():
 
 	name = obs.obs_properties_add_text(props, "name", "File Name", obs.OBS_TEXT_DEFAULT)
 	obs.obs_property_set_long_description(name, "This name will be log's and video's")
+	
+	p = obs.obs_properties_add_list(props, "source", "Text Source", obs.OBS_COMBO_TYPE_EDITABLE, obs.OBS_COMBO_FORMAT_STRING)
+	sources = obs.obs_enum_sources()
+	if sources is not None:
+		for source in sources:
+			source_id = obs.obs_source_get_id(source)
+			if source_id == "text_gdiplus" or source_id == "text_ft2_source":
+				name = obs.obs_source_get_name(source)
+				obs.obs_property_list_add_string(p, name, name)
 
+		obs.source_list_release(sources)
+	
 	return props
 
 
@@ -135,3 +168,29 @@ def script_defaults(settings):
 	obs.obs_data_set_default_bool(settings, "enabled", True)
 	obs.obs_data_set_default_string(settings, "name", "Set Your Name")
 	obs.obs_data_set_default_string(settings, "path", "Set Your Path")
+
+# def script_load(settings):
+# 	# 새로운 텍스트 소스를 생성
+#     text_source = obs.obs_source_create("text_gdiplus", "Time", None, None)
+#     if text_source is None:
+#         print("Failed to create text source")
+#         return
+
+    # 텍스트 설정
+    # settings = obs.obs_data_create()
+    # obs.obs_data_set_string(settings, "text", "Current Time: {}".format(time.time()))
+    # obs.obs_source_update(text_source, settings)
+    # obs.obs_data_release(settings)
+
+    # 텍스트 소스를 추가할 미디어 소스를 찾음
+    # scene = obs.obs_frontend_get_current_scene()
+    # scene = obs.obs_scene_from_source(scene)
+    # source = obs.obs_scene_find_source(scene, "장면")
+
+	# 텍스트 소스를 추가
+    # if source is not None:
+    #     obs.obs_scene_add(scene, text_source)
+    #     obs.obs_sceneitem_set_pos(obs.obs_scene_find_scene_item(scene, text_source), 50, 50)
+    #     obs.obs_source_release(source)
+    # else:
+    #     print("Failed to find scene source")

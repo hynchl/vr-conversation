@@ -1631,9 +1631,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   folderPath: C:\Users\vclexp1\Videos
-  afterConversion: {fileID: 1429499956}
+  videoGroup: {fileID: 1429499956}
   videoPlayer: {fileID: 1494079517}
-  done: 0
+  isDone: 0
 --- !u!4 &1031470575
 Transform:
   m_ObjectHideFlags: 0
