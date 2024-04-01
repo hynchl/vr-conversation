@@ -7,12 +7,15 @@ using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class VideoRecorder : MonoBehaviour
 {
     public VideoPlayer vp;
     public Slider scoreSocialConnection;
     public Slider scoreSocialPresence;
+    public GameObject finishInfo;
+    public bool useCheckBinTransiion = true;
     
     public float[] scoresSC;
     public bool[] SCsManipulated;
@@ -20,7 +23,10 @@ public class VideoRecorder : MonoBehaviour
     public bool[] SPsManipulated;
     public int[] binNumbers;
     public bool isDone;
+    public long lastStartFrame;
     
+    
+    [FormerlySerializedAs("isLastSection")] public bool isLastBin;
     public Recorder recorder;
     [SerializeField]
     string fileName;
@@ -32,6 +38,7 @@ public class VideoRecorder : MonoBehaviour
     public void Start()
     {
         vp = GetComponent<VideoPlayer>();
+        fileName = PlayerPrefs.GetString("Name", "Test"+Random.Range(1000,2000).ToString())+"_video_measure";
         recorder = new Recorder("Data/" + fileName + ".tsv");
         vp.Prepare();
         vp.prepareCompleted += OnVideoPrepared;
@@ -42,13 +49,16 @@ public class VideoRecorder : MonoBehaviour
         if (vp.frame == -1) return;
         if (isDone) return;
         
-        if (((int)vp.frame >= (int)vp.frameCount - 1))
+        if (((int)vp.frame >= (int)binNumbers.Length - 1))
         {
             vp.Pause();
             evaluationPanel.SetActive(true);
             currentFrame = Mathf.Min(binNumbers.Length-1, (int)vp.frame);
+            isLastBin = true;
             return;
         }
+
+        if (!useCheckBinTransiion) return;
         
         if ((binNumbers[(int)vp.frame] != binNumbers[(int)vp.frame + 1]) && vp.isPlaying)
         {
@@ -67,9 +77,23 @@ public class VideoRecorder : MonoBehaviour
             isDone = true;
             return;
         }
+        
         vp.frame += 1;
-        // vp.Play();
+        lastStartFrame = vp.frame;
+        
+        StartCoroutine(PlayVideoPlayer());
+        StartCoroutine(SkipBinCheck());
     }
+    
+    public void Replay()
+    {
+        vp.frame = lastStartFrame;
+        StartCoroutine(PlayVideoPlayer());
+        StartCoroutine(SkipBinCheck());
+    }
+
+
+    
     public void OnVideoPrepared(VideoPlayer vp)
     {
         if (vp.frameCount < 1)
@@ -105,29 +129,56 @@ public class VideoRecorder : MonoBehaviour
             row["SocialPresenceTimePoint"] = SPsManipulated[i].ToString();
             row["SocialConnectionTimePoint"] = SCsManipulated[i].ToString();
             recorder.Add(row);
+
+            // vp.frame += 1;
+            // // StartCoroutine(PlayVideoPlayer());
             
-            vp.StepForward();
+            finishInfo.gameObject.SetActive(true);
+            transform.parent.gameObject.SetActive(true);
         }
         
         recorder.Save();
+        
+        Debug.Log("Successfully saved.");
+    }
+
+    public IEnumerator PlayVideoPlayer()
+    {
+        yield return new WaitForSeconds(0.5f);
+        vp.Play();
+    }
+    
+    public IEnumerator SkipBinCheck()
+    {
+        useCheckBinTransiion = false;
+        yield return new WaitForSeconds(1f);
+        useCheckBinTransiion = true;
     }
     
     public void WriteScoreWithBin()
     {
-        Debug.Log($"length: {scoresSC.Length}, current: {currentFrame}");
 
         int binNumber = binNumbers[currentFrame];
         
+        Debug.Log($"length: {scoresSC.Length}, current: {currentFrame}, bin number: {binNumber}");
         for (int i = 0; i < binNumbers.Length; i++)
         {
             if (binNumbers[i] != binNumber) continue;
-            scoresSC[currentFrame] = scoreSocialConnection.value;
-            scoresSP[currentFrame] = scoreSocialPresence.value;
+            scoresSC[i] = scoreSocialConnection.value;
+            scoresSP[i] = scoreSocialPresence.value;
         }
         
-        vp.Pause();
+        // vp.Pause();
     }
 
+    public void CheckCompletion()
+    {
+        if (isLastBin)
+        {
+            Complete();
+            transform.parent.gameObject.SetActive(false);
+        }
+    }
     public void Add()
     {
         return;
@@ -160,6 +211,37 @@ public class VideoRecorder : MonoBehaviour
         vp.Pause();
     }
 
+    public void SetScores()
+    {
+        // return;
+        
+        int currentFrame = (int)vp.frame;
+        Debug.Log($"length: {scoresSC.Length}, current: {currentFrame}");
+        
+        scoresSC[currentFrame] = scoreSocialConnection.value;
+        SCsManipulated[currentFrame] = true;
+        scoresSP[currentFrame] = scoreSocialPresence.value;
+        SPsManipulated[currentFrame] = true;
+        
+        
+        if (currentFrame + 1 >= scoresSC.Length) return;
+        
+        int currentFrame_ = currentFrame+1;
+        while (!SCsManipulated[currentFrame_]) {
+            scoresSC[currentFrame_] = scoreSocialConnection.value;
+            currentFrame_ += 1;
+            if (currentFrame_ >= SCsManipulated.Length) break;
+        }
+        
+        currentFrame_ = currentFrame+1; // re-initialize
+        while (!SPsManipulated[currentFrame_]) {
+            scoresSP[currentFrame_] = scoreSocialPresence.value;
+            currentFrame_ += 1;
+            if (currentFrame_ >= SPsManipulated.Length) break;
+        }
+        
+        vp.Pause();
+    }
     
     public void SetInteractable(bool val)
     {

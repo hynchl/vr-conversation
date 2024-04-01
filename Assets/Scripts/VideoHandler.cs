@@ -63,7 +63,7 @@ public class VideoHandler : MonoBehaviour
         
         if (videoRecorder != null)
         {
-            Debug.Log(currentFrame);
+            // Debug.Log(currentFrame);
             videoRecorder.scoreSocialConnection.value = videoRecorder.scoresSC[currentFrame];
             videoRecorder.scoreSocialPresence.value = videoRecorder.scoresSP[currentFrame]; 
         }
