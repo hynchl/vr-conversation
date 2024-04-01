@@ -404,9 +404,9 @@ namespace RTC
             
             pc.OnDataChannel = channel =>
             {
-                // This part is executed once when the audio track is added
                 Log($"On Data Channel ===> {dest}");
                 remoteDataChannels[dest] = channel;
+                
                 if (avatarIndices[dest] == -1) return;
                 
                 remoteAvatars[dest] = Instantiate(AvatarReceiverPrefab).GetComponentsInChildren<SampleAvatarEntity>();
@@ -421,7 +421,6 @@ namespace RTC
                     remoteAvatars[dest][0].transform.parent.GetComponent<RemoteRecorder>().UpdateRemoteInfo(ap);
                     NativeArray<byte> _pose = new NativeArray<byte>(ap.pose, Allocator.Temp);
                     
-                    // Log($"On Data Channel Message ===> {dest}");
                     if (remoteAvatars[dest] != null)
                     {
                         for (int i = 0; i < remoteAvatars[dest].Length; i++)
