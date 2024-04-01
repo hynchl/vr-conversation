@@ -42,12 +42,12 @@ public class VideoHandler : MonoBehaviour
             }
         }
 
-
-        if (vp.isPlaying && videoRecorder != null)
-        {
-            videoRecorder.scoreSocialConnection.value = videoRecorder.scoresSC[currentFrame];
-            videoRecorder.scoreSocialPresence.value = videoRecorder.scoresSP[currentFrame]; 
-        }
+        // no review
+        // if (vp.isPlaying && videoRecorder != null)
+        // {
+        //     videoRecorder.scoreSocialConnection.value = videoRecorder.scoresSC[currentFrame];
+        //     videoRecorder.scoreSocialPresence.value = videoRecorder.scoresSP[currentFrame]; 
+        // }
 
     }
 

@@ -19,12 +19,15 @@ public class VideoRecorder : MonoBehaviour
     public float[] scoresSP;
     public bool[] SPsManipulated;
     public int[] binNumbers;
+    public bool isDone;
     
     public Recorder recorder;
     [SerializeField]
     string fileName;
 
     public float evaluationInterval = 30f; //seconds
+    public GameObject evaluationPanel;
+    public int currentFrame;
     
     public void Start()
     {
@@ -36,22 +39,42 @@ public class VideoRecorder : MonoBehaviour
 
     public void Update()
     {
+        if (vp.frame == -1) return;
+        if (isDone) return;
+        
+        if (((int)vp.frame >= (int)vp.frameCount - 1))
+        {
+            vp.Pause();
+            evaluationPanel.SetActive(true);
+            currentFrame = Mathf.Min(binNumbers.Length-1, (int)vp.frame);
+            return;
+        }
+        
         if ((binNumbers[(int)vp.frame] != binNumbers[(int)vp.frame + 1]) && vp.isPlaying)
         {
-            // 다음 프레임부터 뭔가 바뀔 때
+            vp.Pause();
+            evaluationPanel.SetActive(true);
+            currentFrame = (int)vp.frame;
         }
-        // 만약 지금 초가 n-1에서 n으로 바뀌면 평가창이 뜬다.
-        // 그러지 말고 프레임을 이미 나눠놓을까? 빈 인덱스로
-        // 지금 bin number가 바뀌었으면, 일단 정지. 
-        // UI창을 띄워서 '평가하세요. 끝나면 버튼 혹은 엔터를 눌러 다음 구간으 평가하세요'
         
+
     }
 
+    public void Next()
+    {
+        if ((int)vp.frame + 1 >= (int)vp.frameCount)
+        {
+            isDone = true;
+            return;
+        }
+        vp.frame += 1;
+        // vp.Play();
+    }
     public void OnVideoPrepared(VideoPlayer vp)
     {
         if (vp.frameCount < 1)
         {
-            Debug.LogError("Video Clip is not loaded.");  
+            Debug.LogError("A video clip is not loaded.");  
         }
         
         scoresSC = Enumerable.Repeat(-1f, (int)vp.frameCount).ToArray();
@@ -61,11 +84,10 @@ public class VideoRecorder : MonoBehaviour
         binNumbers = new int[(int)vp.frameCount];
 
         // binning
-        float totalTime = (float)vp.frameCount / vp.frameRate;
         for (int i = 0; i < (int)vp.frameCount; i++)
         {
             float currentTime = i / vp.frameRate;
-            binNumbers[i] = (int)Mathf.Floor(currentTime / totalTime);
+            binNumbers[i] = (int)Mathf.Floor(currentTime / evaluationInterval);
         }
     }
     
@@ -90,31 +112,17 @@ public class VideoRecorder : MonoBehaviour
         recorder.Save();
     }
     
-    public void Add()
+    public void WriteScoreWithBin()
     {
-        int currentFrame = (int)vp.frame;
         Debug.Log($"length: {scoresSC.Length}, current: {currentFrame}");
+
+        int binNumber = binNumbers[currentFrame];
         
-        scoresSC[currentFrame] = scoreSocialConnection.value;
-        SCsManipulated[currentFrame] = true;
-        scoresSP[currentFrame] = scoreSocialPresence.value;
-        SPsManipulated[currentFrame] = true;
-        
-        
-        if (currentFrame + 1 >= scoresSC.Length) return;
-        
-        int currentFrame_ = currentFrame+1;
-        while (!SCsManipulated[currentFrame_]) {
-            scoresSC[currentFrame_] = scoreSocialConnection.value;
-            currentFrame_ += 1;
-            if (currentFrame_ >= SCsManipulated.Length) break;
-        }
-        
-        currentFrame_ = currentFrame+1; // re-initialize
-        while (!SPsManipulated[currentFrame_]) {
-            scoresSP[currentFrame_] = scoreSocialPresence.value;
-            currentFrame_ += 1;
-            if (currentFrame_ >= SPsManipulated.Length) break;
+        for (int i = 0; i < binNumbers.Length; i++)
+        {
+            if (binNumbers[i] != binNumber) continue;
+            scoresSC[currentFrame] = scoreSocialConnection.value;
+            scoresSP[currentFrame] = scoreSocialPresence.value;
         }
         
         vp.Pause();
@@ -122,6 +130,8 @@ public class VideoRecorder : MonoBehaviour
 
     public void Add()
     {
+        return;
+        
         int currentFrame = (int)vp.frame;
         Debug.Log($"length: {scoresSC.Length}, current: {currentFrame}");
         
