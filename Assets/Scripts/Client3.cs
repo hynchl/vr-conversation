@@ -110,16 +110,6 @@ namespace RTC
                 // Debug.Log("useAvatar");
                 SendAvatarPose();
             }
-            
-            // if (dataChannel != null)
-            // {
-            //     // if (dataChannel.ReadyState == RTCDataChannelState.Open)
-            //     // {
-            //     //     SendMsg();
-            //     // }
-            //     
-            //
-            // }
 
         }
 
@@ -175,7 +165,6 @@ namespace RTC
             if (Input.GetKeyUp(KeyCode.Alpha3))
             {
                 socket.Emit("evaluation", "null");
-                Debug.Log("yes3");
             }
         }
         
@@ -418,6 +407,8 @@ namespace RTC
                 // This part is executed once when the audio track is added
                 Log($"On Data Channel ===> {dest}");
                 remoteDataChannels[dest] = channel;
+                if (avatarIndices[dest] == -1) return;
+                
                 remoteAvatars[dest] = Instantiate(AvatarReceiverPrefab).GetComponentsInChildren<SampleAvatarEntity>();
                 remoteAvatars[dest][0]._assets[0] = new SampleAvatarEntity.AssetData() { path = avatarIndices[dest].ToString(), source = OvrAvatarEntity.AssetSource.Zip};
                 remoteAvatars[dest][1]._assets[0] = new SampleAvatarEntity.AssetData() { path = avatarIndices[dest].ToString(), source = OvrAvatarEntity.AssetSource.Zip};
@@ -430,21 +421,16 @@ namespace RTC
                     remoteAvatars[dest][0].transform.parent.GetComponent<RemoteRecorder>().UpdateRemoteInfo(ap);
                     NativeArray<byte> _pose = new NativeArray<byte>(ap.pose, Allocator.Temp);
                     
-                    
-                    if (useAvatar)
+                    // Log($"On Data Channel Message ===> {dest}");
+                    if (remoteAvatars[dest] != null)
                     {
-                        // Log($"On Data Channel Message ===> {dest}");
-                        if (remoteAvatars[dest] != null)
+                        for (int i = 0; i < remoteAvatars[dest].Length; i++)
                         {
-                            for (int i = 0; i < remoteAvatars[dest].Length; i++)
+                            if (remoteAvatars[dest][i].isLoaded)
                             {
-                                if (remoteAvatars[dest][i].isLoaded)
-                                {
-                                    // Log(remoteAvatars[dest][i].activeStreamLod.ToString());
-                                    remoteAvatars[dest][i].transform.position = ap.position;
-                                    remoteAvatars[dest][i].transform.rotation = ap.rotation;
-                                    remoteAvatars[dest][i].ApplyStreamData(_pose);
-                                }
+                                remoteAvatars[dest][i].transform.position = ap.position;
+                                remoteAvatars[dest][i].transform.rotation = ap.rotation;
+                                remoteAvatars[dest][i].ApplyStreamData(_pose);
                             }
                         }
                     }
@@ -659,7 +645,7 @@ namespace RTC
                 offerSocketId = currentDest,
                 answerSocketId = socketId,
                 answer = desc,
-                avatarIndex = GameManager.instance.selectedAvatar
+                avatarIndex = useAvatar?GameManager.instance.selectedAvatar:-1
             };
             
             socket.Emit("answer", answer);
@@ -689,7 +675,7 @@ namespace RTC
                 offerSocketId = socketId,
                 enableMediaStream = true, 
                 enableDataChannel = true,
-                avatarIndex = GameManager.instance.selectedAvatar
+                avatarIndex = useAvatar?GameManager.instance.selectedAvatar:-1
             };
             
             socket.Emit("offer", offerData); 

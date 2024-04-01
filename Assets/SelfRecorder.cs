@@ -73,7 +73,7 @@ public class SelfRecorder : ExpRecorder
 
         if (avatarpack.eyeData != null)
         {
-            Debug.Log(avatarpack.eyeData.Count);
+            // Debug.Log(avatarpack.eyeData.Count);
             foreach (var pair in avatarpack.eyeData)
             {
                 result[pair.Key] = pair.Value.ToString("F6");
