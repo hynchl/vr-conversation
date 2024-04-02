@@ -20,13 +20,16 @@ public class SelfRecorder : ExpRecorder
     // Start is called before the first frame update
     public TMPro.TMP_Text text;
     
+    
     void Start()
     {
         avatarpack = new AvatarPack();
         recorder = new Recorder("Data/" + GameManager.instance.sessionId + "_" + fileName + ".tsv");
         tfs = new List<Transform>();
-        joints = new Dictionary<string, Transform>();
-        // arh.AddToSelfRecorder();
+        if (this.joints == null)
+        {
+            this.joints = new Dictionary<string, Transform>();
+        }
     }
 
     public void UpdateRemoteInfo(AvatarPack ap)

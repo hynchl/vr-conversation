@@ -3156,6 +3156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95044baf65b10c4e89b246d2f881ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &445478715 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3157928069488761443, guid: 425e6ea49dcc520488b469a76c46798a, type: 3}
+  m_PrefabInstance: {fileID: 1500682469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &475149022
 GameObject:
   m_ObjectHideFlags: 0
@@ -3258,7 +3263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &478257973
 Transform:
   m_ObjectHideFlags: 0
@@ -6775,7 +6780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &920810879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9353,8 +9358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e625c2c60c0aef74eb1116b6fc32eab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedAvatar: 0
   sessionId: 
+  selectedAvatar: 0
   avatarEntities:
   - {fileID: 964026243}
   - {fileID: 37084469}
@@ -11187,7 +11192,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1645265085}
     m_Modifications:
     - target: {fileID: 3157928069488761441, guid: 425e6ea49dcc520488b469a76c46798a, type: 3}
       propertyPath: m_Name
@@ -11255,7 +11260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7625653420356291568, guid: 425e6ea49dcc520488b469a76c46798a, type: 3}
       propertyPath: _jointTypesToCullOn.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7625653420356291568, guid: 425e6ea49dcc520488b469a76c46798a, type: 3}
       propertyPath: _jointTypesToCullOn.Array.data[1]
@@ -11263,10 +11268,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7625653420356291568, guid: 425e6ea49dcc520488b469a76c46798a, type: 3}
       propertyPath: _jointTypesToCullOn.Array.data[2]
-      value: 19
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7625653420356291568, guid: 425e6ea49dcc520488b469a76c46798a, type: 3}
       propertyPath: _jointTypesToCullOn.Array.data[3]
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625653420356291568, guid: 425e6ea49dcc520488b469a76c46798a, type: 3}
+      propertyPath: _jointTypesToCullOn.Array.data[4]
       value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -12014,7 +12023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1645265085
 Transform:
   m_ObjectHideFlags: 0
@@ -12037,6 +12046,8 @@ Transform:
   - {fileID: 695295219}
   - {fileID: 1863355730}
   - {fileID: 478257973}
+  - {fileID: 2077184647}
+  - {fileID: 445478715}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1648160302
@@ -16021,7 +16032,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1645265085}
     m_Modifications:
     - target: {fileID: 100000, guid: 4b650a383c3760f449b65ff48bccdd5f, type: 3}
       propertyPath: m_IsActive
@@ -16093,7 +16104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2037080, guid: 4b650a383c3760f449b65ff48bccdd5f, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2037080, guid: 4b650a383c3760f449b65ff48bccdd5f, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -16129,7 +16140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 20000010189485334, guid: 4b650a383c3760f449b65ff48bccdd5f, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 20000010189485334, guid: 4b650a383c3760f449b65ff48bccdd5f, type: 3}
       propertyPath: near clip plane
@@ -16141,7 +16152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 20000012175207052, guid: 4b650a383c3760f449b65ff48bccdd5f, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 20000012175207052, guid: 4b650a383c3760f449b65ff48bccdd5f, type: 3}
       propertyPath: near clip plane
@@ -16835,5 +16846,3 @@ SceneRoots:
   - {fileID: 1969505794}
   - {fileID: 920810882}
   - {fileID: 1645265085}
-  - {fileID: 2077184646}
-  - {fileID: 1500682469}

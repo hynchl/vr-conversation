@@ -305,15 +305,20 @@ namespace RTC
                 case RTCIceConnectionState.Disconnected:
                     Log($"IceConnectionState: Disconnected");
                     
-                    // Remove RTC client receier objects
-                    Log(pcName);
+                    // Remove RTC client receiver objects
+                    // Log(pcName);
                     GameObject _go = receivedAudios[pcName].gameObject;
                     receivedAudios[pcName] = null;
                     Destroy(_go);
                     
-                    _go = remoteAvatars[pcName][0].transform.parent.gameObject;
-                    remoteAvatars[pcName] = null;
-                    Destroy(_go);
+                    try
+                    {
+                        _go = remoteAvatars[pcName][0].transform.parent.gameObject;
+                        remoteAvatars[pcName] = null;
+                        Destroy(_go);
+                    }
+                    catch { }
+
                     
                     break;
                 case RTCIceConnectionState.Failed:

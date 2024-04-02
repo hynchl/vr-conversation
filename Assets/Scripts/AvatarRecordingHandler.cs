@@ -22,10 +22,16 @@ public class AvatarRecordingHandler : MonoBehaviour
         remoteRecorder.tfs.Add(transform.Find("Joint RightHandWrist"));
         
     }
-    
+
     public void AddToSelfRecorder()
     {
         SampleAvatarEntity sae = GetComponent<SampleAvatarEntity>();
+        if (selfRecorder.joints == null)
+        {
+            selfRecorder.joints = new Dictionary<string, Transform>();
+        }
+
+        selfRecorder.joints = new Dictionary<string, Transform>();
         selfRecorder.joints["Head"] = sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.Head);
         selfRecorder.joints["Hips"] = sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.Hips);
         selfRecorder.joints["Chest"] = sae.GetSkeletonTransform(CAPI.ovrAvatar2JointType.Chest);
