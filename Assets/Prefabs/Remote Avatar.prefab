@@ -75,6 +75,22 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 436740438416131349, guid: 6412a3e923eb5564db6add3c2eed0fe9, type: 3}
+      propertyPath: _criticalJointTypes.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 436740438416131349, guid: 6412a3e923eb5564db6add3c2eed0fe9, type: 3}
+      propertyPath: _criticalJointTypes.Array.data[2]
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 436740438416131349, guid: 6412a3e923eb5564db6add3c2eed0fe9, type: 3}
+      propertyPath: _criticalJointTypes.Array.data[3]
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 436740438416131349, guid: 6412a3e923eb5564db6add3c2eed0fe9, type: 3}
+      propertyPath: _criticalJointTypes.Array.data[4]
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 436740438416131349, guid: 6412a3e923eb5564db6add3c2eed0fe9, type: 3}
       propertyPath: _creationInfo.renderFilters.lodFlags
       value: 1
       objectReference: {fileID: 0}
@@ -182,6 +198,22 @@ PrefabInstance:
     - target: {fileID: 436740438416131349, guid: 6412a3e923eb5564db6add3c2eed0fe9, type: 3}
       propertyPath: _activeView
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 436740438416131349, guid: 6412a3e923eb5564db6add3c2eed0fe9, type: 3}
+      propertyPath: _criticalJointTypes.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 436740438416131349, guid: 6412a3e923eb5564db6add3c2eed0fe9, type: 3}
+      propertyPath: _criticalJointTypes.Array.data[2]
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 436740438416131349, guid: 6412a3e923eb5564db6add3c2eed0fe9, type: 3}
+      propertyPath: _criticalJointTypes.Array.data[3]
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 436740438416131349, guid: 6412a3e923eb5564db6add3c2eed0fe9, type: 3}
+      propertyPath: _criticalJointTypes.Array.data[4]
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 436740438416131349, guid: 6412a3e923eb5564db6add3c2eed0fe9, type: 3}
       propertyPath: _creationInfo.renderFilters.lodFlags
