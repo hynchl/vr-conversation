@@ -57,7 +57,7 @@ namespace RTC
         
         private AudioStreamTrack audioStreamTrack;
         private Dictionary<string, AudioStreamTrack> AudioStreamTracks;
-        
+        public string micName = "Headset Microphone (Oculus Virtual Audio Device)";
 
         [Header("Development")]
         public Color debugColor;
@@ -578,13 +578,14 @@ namespace RTC
             {
                 Debug.Log(mic);
             }
-            
-#if UNITY_EDITOR
-            //var deviceName = "마이크 배열 (Realtek(R) Audio)"; //Microphone.devices[0]; //ad-hoc
-            var deviceName = "Headset Microphone (Oculus Virtual Audio Device)";
-#else   
-            var deviceName = Microphone.devices[0];
-#endif 
+
+            var deviceName = micName;
+// #if UNITY_EDITOR
+//             //var deviceName = "마이크 배열 (Realtek(R) Audio)"; //Microphone.devices[0]; //ad-hoc
+//             var deviceName = "Headset Microphone (Oculus Virtual Audio Device)";
+// #else   
+//             var deviceName = Microphone.devices[0];
+// #endif 
             // ad-hoc
             Microphone.GetDeviceCaps(deviceName, out int minFreq, out int maxFreq);
             Log($"Mic name : {deviceName} ({minFreq}, {maxFreq})");
