@@ -89,7 +89,7 @@ public class SelectAvatar : MonoBehaviour
         if (selectedAvatarIndex >= 0) {
             Debug.Log($"Pinch End {selectedAvatarIndex}");
             SceneManager.LoadScene("V5");
-            GameManager.instance.selectedAvatar = selectedAvatarIndex;
+            GameManager.instance.avatarIndex = selectedAvatarIndex;
             SceneManager.UnloadSceneAsync("Introduction");
         }
 

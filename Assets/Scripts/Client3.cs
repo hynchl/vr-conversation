@@ -649,7 +649,7 @@ namespace RTC
                 offerSocketId = currentDest,
                 answerSocketId = socketId,
                 answer = desc,
-                avatarIndex = useAvatar?GameManager.instance.selectedAvatar:-1
+                avatarIndex = useAvatar?GameManager.instance.avatarIndex:-1
             };
             
             socket.Emit("answer", answer);
@@ -679,7 +679,7 @@ namespace RTC
                 offerSocketId = socketId,
                 enableMediaStream = true, 
                 enableDataChannel = true,
-                avatarIndex = useAvatar?GameManager.instance.selectedAvatar:-1
+                avatarIndex = useAvatar?GameManager.instance.avatarIndex:-1
             };
             
             socket.Emit("offer", offerData); 

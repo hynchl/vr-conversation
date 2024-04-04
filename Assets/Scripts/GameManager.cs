@@ -3,19 +3,19 @@ using Oculus.Avatar2;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
     public string sessionId = "untitled";
-    public int selectedAvatar;
+    [FormerlySerializedAs("selectedAvatar")] public int avatarIndex;
     public SampleAvatarEntity[] avatarEntities;
     
     public static GameManager instance = null;
 
     public GameObject expOperator;
-
-    public GameObject conversationGroup;
-    public GameObject preExperimentGroup;
+    public GameObject[] preConversationObjects;
+    public GameObject[] inConversationObjects;
     
     void Awake()
     {
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            selectedAvatar = instance.selectedAvatar;
+            avatarIndex = instance.avatarIndex;
         }
     }
 
@@ -33,19 +33,39 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Alpha2))
         {
-            conversationGroup.SetActive(true);
-            preExperimentGroup.SetActive(false);
+            ToConversation();
         }
         
+    }
+
+    public void ToConversation()
+    {
+        if (avatarIndex == -1) return;
+        
+        // conversationGroup.SetActive(true);
+        // preExperimentGroup.SetActive(false);
+       
+        foreach (GameObject go in inConversationObjects)
+        {
+            go.SetActive(true);
+        }
+        
+        foreach (GameObject go in preConversationObjects)
+        {
+            go.SetActive(false);
+        }
+
+        Camera.main.clearFlags = CameraClearFlags.Skybox;
     }
         
     public void SetAvatar(int idx)
     {
-        instance.selectedAvatar = idx;
+        instance.avatarIndex = idx;
+        this.avatarIndex = idx;
         
         foreach (SampleAvatarEntity entity in avatarEntities)
         {
-            entity.ChangePresetAvatar(instance.selectedAvatar.ToString());
+            entity.ChangePresetAvatar(instance.avatarIndex.ToString());
         }
     }
 

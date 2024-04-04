@@ -28,9 +28,10 @@ public class AvatarSelect : MonoBehaviour,IPointerClickHandler
        // ps.haveKnife = false;
         */
         Debug.Log("Click DETECTED ON RIFFLE IMAGE");
-        cursor.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
-        GameManager.instance.selectedAvatar = int.Parse(gameObject.name);
-        GameManager.instance.SetAvatar(int.Parse(gameObject.name));
+        cursor.SetActive(true);
+        // cursor.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+        // GameManager.instance.selectedAvatar = int.Parse(gameObject.name);
+        // GameManager.instance.SetAvatar(int.Parse(gameObject.name));
     }
 
 

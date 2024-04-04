@@ -75,8 +75,8 @@
       "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.avatars": {
-      "version": "24.0.1",
-      "depth": 0,
+      "version": "24.1.1",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.meta.xr.sdk.platform": "59.0.0",
@@ -88,17 +88,17 @@
       "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.avatars.sample.assets": {
-      "version": "24.0.0",
+      "version": "24.1.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.meta.xr.sdk.avatars": "24.0.1"
+        "com.meta.xr.sdk.avatars": "24.1.1"
       },
       "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.core": {
-      "version": "60.0.0",
-      "depth": 1,
+      "version": "63.0.0",
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -113,8 +113,8 @@
       "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.interaction": {
-      "version": "60.0.0",
-      "depth": 1,
+      "version": "63.0.0",
+      "depth": 2,
       "source": "registry",
       "dependencies": {
         "com.unity.textmeshpro": "3.0.6",
@@ -123,12 +123,22 @@
       "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.interaction.ovr": {
-      "version": "60.0.0",
+      "version": "63.0.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.meta.xr.sdk.core": "60.0.0",
-        "com.meta.xr.sdk.interaction": "60.0.0"
+        "com.meta.xr.sdk.core": "63.0.0",
+        "com.meta.xr.sdk.interaction": "63.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.meta.xr.sdk.interaction.ovr.samples": {
+      "version": "63.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.meta.xr.sdk.interaction.ovr": "63.0.0",
+        "com.meta.xr.sdk.sharedassets": "63.0.0"
       },
       "url": "https://packages.unity.com"
     },
@@ -138,6 +148,16 @@
       "source": "registry",
       "dependencies": {
         "com.meta.xr.sdk.core": "60.0.0",
+        "com.unity.ugui": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.meta.xr.sdk.sharedassets": {
+      "version": "63.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.textmeshpro": "3.0.6",
         "com.unity.ugui": "1.0.0"
       },
       "url": "https://packages.unity.com"
@@ -175,10 +195,20 @@
       "url": "https://packages.unity.com"
     },
     "com.meta.xr.simulator": {
-      "version": "60.0.0",
+      "version": "62.0.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.meta.xr.simulator.samples": {
+      "version": "62.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.meta.xr.sdk.core": "62.0.0",
+        "com.meta.xr.simulator": "62.0.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.sprite": {
