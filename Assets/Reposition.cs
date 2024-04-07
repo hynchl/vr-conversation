@@ -26,6 +26,9 @@ public class Reposition : MonoBehaviour
             foreach (Transform tf in itemsToMove)
             {
                 tf.position = tf.position + diff;
+                Vector3 eulerAngle = tf.eulerAngles;
+                eulerAngle.y = target.eulerAngles.y;
+                tf.eulerAngles = eulerAngle;
             }
         }
     }
