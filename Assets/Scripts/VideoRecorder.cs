@@ -38,7 +38,7 @@ public class VideoRecorder : MonoBehaviour
     public void Start()
     {
         vp = GetComponent<VideoPlayer>();
-        fileName = PlayerPrefs.GetString("Name", "Test"+Random.Range(1000,2000).ToString())+"_video_measure";
+        fileName = PlayerPrefs.GetString("Name", "test") + "_video_measure";
         recorder = new Recorder("Data/" + fileName + ".tsv");
         vp.Prepare();
         vp.prepareCompleted += OnVideoPrepared;

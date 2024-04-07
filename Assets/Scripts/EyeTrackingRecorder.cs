@@ -16,7 +16,7 @@ public class EyeTrackingRecorder : ExpRecorder
     void Start () {
         ets = FindObjectsOfType<EyeTrackingWithSdf>();
         // recorder = new Recorder("Data/" + fileName + ".tsv");
-        recorder = new Recorder("Data/" + GameManager.instance.sessionId + "_" + "eyetracking" + ".tsv");
+        recorder = new Recorder("Data/" + PlayerPrefs.GetString("Name", "test") + "_" + "eyetracking" + ".tsv");
     }
 
     // Update is called once per frame

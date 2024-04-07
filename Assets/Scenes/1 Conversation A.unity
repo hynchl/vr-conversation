@@ -27857,9 +27857,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
+      propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 652489729}
+      objectReference: {fileID: 652489731}
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -27867,6 +27871,10 @@ PrefabInstance:
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
+      propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4464019749805533398, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: m_Mesh
@@ -57185,13 +57193,17 @@ PrefabInstance:
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1921419827}
+      objectReference: {fileID: 1921419829}
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1921419829}
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
+      propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4464019749805533398, guid: 5d6a778d752728b4b82560870736624a, type: 3}
@@ -60461,9 +60473,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
+      propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1215772922}
+      objectReference: {fileID: 1215772924}
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -60471,6 +60487,10 @@ PrefabInstance:
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
+      propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4464019749805533398, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: m_Mesh
@@ -64645,6 +64665,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
+      propertyPath: _showSource
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: layerMask.m_Bits
       value: 0
       objectReference: {fileID: 0}
@@ -64653,9 +64677,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
+      propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1299556206}
+      objectReference: {fileID: 1299556208}
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -64663,6 +64691,10 @@ PrefabInstance:
     - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361121670166457210, guid: 5d6a778d752728b4b82560870736624a, type: 3}
+      propertyPath: _sdfTextureEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4464019749805533398, guid: 5d6a778d752728b4b82560870736624a, type: 3}
       propertyPath: m_Mesh
@@ -69030,7 +69062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1863355727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87788,7 +87820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2483171112400622654, guid: f54012181eacade4ea242c65f804720f, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 15743
+      value: 15711
       objectReference: {fileID: 0}
     - target: {fileID: 2514675399181695721, guid: f54012181eacade4ea242c65f804720f, type: 3}
       propertyPath: m_RootOrder

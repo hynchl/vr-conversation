@@ -15,7 +15,7 @@ public class AvatarRecorder : ExpRecorder
     
     void Start () {
         // recorder = new Recorder("Data/" + fileName + ".tsv");
-        recorder = new Recorder("Data/" + GameManager.instance.sessionId + "_" + "self" + ".tsv");
+        recorder = new Recorder("Data/" + PlayerPrefs.GetString("Name", "test") + "_" + "self" + ".tsv");
     }
 
     void LateUpdate () {

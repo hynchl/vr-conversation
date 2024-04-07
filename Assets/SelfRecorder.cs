@@ -24,7 +24,7 @@ public class SelfRecorder : ExpRecorder
     void Start()
     {
         avatarpack = new AvatarPack();
-        recorder = new Recorder("Data/" + GameManager.instance.sessionId + "_" + fileName + ".tsv");
+        recorder = new Recorder("Data/" + PlayerPrefs.GetString("Name", "test") + "_" + fileName + ".tsv");
         tfs = new List<Transform>();
         if (this.joints == null)
         {
