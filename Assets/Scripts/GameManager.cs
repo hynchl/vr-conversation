@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject expOperator;
     public GameObject[] preConversationObjects;
     public GameObject[] inConversationObjects;
+    public RTC.Client3 client;
     
     void Awake()
     {
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Alpha2))
+        if (Input.GetKeyUp(KeyCode.F2))
         {
             ToConversation();
         }
@@ -69,13 +70,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetParticipantID()
+    public void SetSignalingServerAddress()
     {
-        sessionId = GameObject.Find("Text(PID)").GetComponent<TMP_Text>().text;
+        string address = GameObject.Find("InputField (TMP) : Signal Server Address").GetComponent<TMP_InputField>().text;
+        client.socketUri = address;
+    }
+
+    public void SetSessionID()
+    {
+        sessionId = GameObject.Find("InputField (TMP) : Session ID").GetComponent<TMP_InputField>().text;
+        PlayerPrefs.SetString("Name", sessionId);
     }
 
     public void StartEvaluation()
     {
-        SceneManager.LoadScene("4 Video Evaluation");
+        SceneManager.LoadScene("2 PostConversation");
     }
 }
