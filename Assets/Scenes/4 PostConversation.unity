@@ -2314,7 +2314,7 @@ PrefabInstance:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionKor
       value: "\uB2F9\uC2E0\uC740 \uC0C1\uB300\uBC29\uACFC\uC758 \uB300\uD654\uAC00
-        \uC5BC\uB9C8\uB098 \uB9CE\uC774 \uC990\uAC70\uC6E0\uC2B5\uB2C8\uAE4C?\r\n"
+        \uC815\uB9D0 \uC990\uAC70\uC6E0\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: variableName
@@ -3714,8 +3714,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionKor
-      value: "\uC0C1\uB300\uBC29\uACFC\uC758 \uB300\uD654\uAC00 \uC5BC\uB9C8\uB098
-        \uC798 \uB9E4\uB044\uB7FD\uAC8C \uC774\uC5B4\uC84C\uC2B5\uB2C8\uAE4C?\r\n"
+      value: "\uC0C1\uB300\uBC29\uACFC\uC758 \uB300\uD654\uAC00 \uB9E4\uC6B0 \uB9E4\uB044\uB7FD\uAC8C
+        \uC774\uC5B4\uC84C\uB2E4.\r\n"
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: variableName
@@ -9560,7 +9560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1658457369
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11530,6 +11530,10 @@ PrefabInstance:
     - target: {fileID: 7324774918510285785, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: m_Name
       value: 'QSliderItem: Likability, Enjoyment, and Flow 3'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324774918510285785, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8462404394835078482, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: m_AnchorMax.y
@@ -15566,8 +15570,8 @@ Animator:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 2093930893}
+  - {fileID: 1829130981}
   - {fileID: 1031470575}
   - {fileID: 607341884}
-  - {fileID: 1829130981}
   - {fileID: 1429499957}
+  - {fileID: 2093930893}
