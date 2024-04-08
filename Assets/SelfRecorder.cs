@@ -24,7 +24,7 @@ public class SelfRecorder : ExpRecorder
     void Start()
     {
         avatarpack = new AvatarPack();
-        recorder = new Recorder("Data/" + PlayerPrefs.GetString("Name", "test") + "_" + fileName + ".tsv");
+        recorder = new Recorder("Data/" + PlayerPrefs.GetString("Name", "test") + "_" + "self" + ".tsv");
         tfs = new List<Transform>();
         if (this.joints == null)
         {
@@ -58,12 +58,14 @@ public class SelfRecorder : ExpRecorder
 
         foreach (KeyValuePair<string, Transform> pair in joints)
         {
-            result[$"POSE.{pair.Key}.position.x"] = pair.Value.position.x.ToString("F6"); // global
-            result[$"POSE.{pair.Key}.position.y"] = pair.Value.position.y.ToString("F6"); // global
-            result[$"POSE.{pair.Key}.position.z"] = pair.Value.position.z.ToString("F6"); // global
-            result[$"POSE.{pair.Key}.rotation.x"] = pair.Value.eulerAngles.x.ToString("F6"); // global
-            result[$"POSE.{pair.Key}.rotation.y"] = pair.Value.eulerAngles.y.ToString("F6"); // global
-            result[$"POSE.{pair.Key}.rotation.z"] = pair.Value.eulerAngles.z.ToString("F6"); // global
+            Vector3 position = pair.Value.position;
+            Vector3 angle = pair.Value.eulerAngles;
+            result[$"POSE.{pair.Key}.position.x"] = position.x.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.position.y"] = position.y.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.position.z"] = position.z.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.rotation.x"] = angle.x.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.rotation.y"] = angle.y.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.rotation.z"] = angle.z.ToString("F6"); // global
         }
         
         if (avatarpack.isValidFaceExpressions)

@@ -17,6 +17,8 @@ public class RemoteRecorder : ExpRecorder
     public List<Transform> tfs;
     // Start is called before the first frame update
 
+    public Dictionary<string, Transform> joints;
+    
     void Start()
     {
         avatarpack = new AvatarPack();
@@ -48,17 +50,18 @@ public class RemoteRecorder : ExpRecorder
     {
         Dictionary<string, object> result = new Dictionary<string, object>();
         
-
-        foreach (var tf in tfs)
+        foreach (KeyValuePair<string, Transform> pair in joints)
         {
-            result[$"POSE.{tf.gameObject.name.Split(" ")[1]}.position.x"] = tf.position.x.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name.Split(" ")[1]}.position.y"] = tf.position.y.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name.Split(" ")[1]}.position.z"] = tf.position.z.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name.Split(" ")[1]}.rotation.x"] = tf.eulerAngles.x.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name.Split(" ")[1]}.rotation.x"] = tf.eulerAngles.y.ToString("F6"); // global
-            result[$"POSE.{tf.gameObject.name.Split(" ")[1]}.rotation.x"] = tf.eulerAngles.z.ToString("F6"); // global
+            Vector3 position = pair.Value.position;
+            Vector3 angle = pair.Value.eulerAngles;
+            result[$"POSE.{pair.Key}.position.x"] = position.x.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.position.y"] = position.y.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.position.z"] = position.z.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.rotation.x"] = angle.x.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.rotation.y"] = angle.y.ToString("F6"); // global
+            result[$"POSE.{pair.Key}.rotation.z"] = angle.z.ToString("F6"); // global
         }
-        
+
         if (avatarpack.isValidFaceExpressions)
         {
             foreach (var pair in avatarpack.faceExpressions)
