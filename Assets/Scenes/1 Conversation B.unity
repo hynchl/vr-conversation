@@ -17596,6 +17596,68 @@ Transform:
   - {fileID: 367718257}
   m_Father: {fileID: 428869900}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &521830089
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1645265085}
+    m_Modifications:
+    - target: {fileID: 5207571536920797041, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+      propertyPath: m_Name
+      value: New Warning
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330022939245909920, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.024
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330022939245909920, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330022939245909920, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330022939245909920, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330022939245909920, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330022939245909920, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330022939245909920, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330022939245909920, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330022939245909920, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330022939245909920, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+--- !u!4 &521830090 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5330022939245909920, guid: 5a1554ffb8c89ad4aa7de26b0c074149, type: 3}
+  m_PrefabInstance: {fileID: 521830089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &522158282
 GameObject:
   m_ObjectHideFlags: 0
@@ -49565,6 +49627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1345411339}
   - component: {fileID: 1345411340}
+  - component: {fileID: 1345411341}
   m_Layer: 0
   m_Name: Sending Audio
   m_TagString: Untagged
@@ -49683,6 +49746,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1345411341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345411338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe2c8f3d0dd0c24aa44600b74586d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 1345411340}
+  _micInputVolume: 1
+  _micInputMode: 2
+  _inputButtonName: 
+  _stopRecordingWhilePaused: 1
+  _stopRecordingWhileUnfocused: 1
+  _micCaptureTimeout: 5
+  _preferOculusMic: 1
 --- !u!1 &1349476867
 GameObject:
   m_ObjectHideFlags: 0
@@ -60868,6 +60951,7 @@ Transform:
   m_Children:
   - {fileID: 1413229692}
   - {fileID: 1356175452}
+  - {fileID: 521830090}
   - {fileID: 1313285673}
   - {fileID: 842225697}
   - {fileID: 1324563682}
@@ -104944,6 +105028,18 @@ MonoBehaviour:
   _whenSelect:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1212589257}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ToConversation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 560236072}
         m_TargetAssemblyTypeName: Oculus.Interaction.AudioTrigger, Oculus.Interaction.Samples
         m_MethodName: PlayAudio
@@ -104960,18 +105056,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1212589257}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ToConversation
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
