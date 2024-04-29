@@ -4,9 +4,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Serialization;
+using System.Diagnostics;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using WindowsInput;
+using WindowsInput.Native;
+using System.Runtime.InteropServices;
+using System;
+using System.Diagnostics;
 
 public class GameManager : MonoBehaviour
 {
+        
+    [DllImport("user32.dll")]
+    private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+    [DllImport("user32.dll")]
+    private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+    [DllImport("user32.dll")]
+    static extern bool AllowSetForegroundWindow(int dwProcessId);
+    
+
     public string sessionId = "untitled";
     [FormerlySerializedAs("selectedAvatar")] public int avatarIndex;
     public SampleAvatarEntity[] avatarEntities;
@@ -20,6 +39,34 @@ public class GameManager : MonoBehaviour
     
     void Awake()
     {
+
+        // Start OBS if it is not open
+        string currentProcessname = System.Diagnostics.Process.GetCurrentProcess().ProcessName;
+
+        if (!IsProcessRunning("obs64"))
+        {
+            StartOBS();
+        }
+        else
+        {
+            UnityEngine.Debug.Log("Program is already running.");
+        }
+
+            
+        Process[] p = Process.GetProcessesByName(currentProcessname);
+        if (p.Length > 0)
+            try
+            {
+                ShowWindowAsync(p[0].MainWindowHandle, 1);
+                AllowSetForegroundWindow(p[0].Id);
+                SetForegroundWindow(p[0].MainWindowHandle);
+            }
+            catch(Exception ex)
+            {
+                UnityEngine.Debug.Log(ex.Message);
+            }
+        
+
         if (null == instance)
         {
             instance = this;
@@ -85,5 +132,27 @@ public class GameManager : MonoBehaviour
     public void StartEvaluation()
     {
         SceneManager.LoadScene("2 PostConversation");
+    }
+
+    public void StartOBS()
+    {
+        string directoryPath = @"C:\Program Files\obs-studio\bin\64bit";
+        string programPath = @"obs64.exe";
+
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            WorkingDirectory = directoryPath,
+            FileName = "cmd.exe",
+            Arguments = $"/c start \"\" \"{programPath}\""
+        };
+
+        Process.Start(startInfo);
+
+    }
+
+    private bool IsProcessRunning(string processName)
+    {
+        Process[] processes = Process.GetProcessesByName(processName);
+        return processes.Length > 0;
     }
 }

@@ -43,7 +43,6 @@ public class VideoRecordingTrigger : MonoBehaviour
                 ShowWindowAsync(p[0].MainWindowHandle, SW_SHOWNORMAL);
                 AllowSetForegroundWindow(p[0].Id);
                 SetForegroundWindow(p[0].MainWindowHandle);
-                UnityEngine.Debug.Log("yeah");
             }
             catch(Exception ex)
             {

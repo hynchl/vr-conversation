@@ -126,12 +126,7 @@ public class VideoRecorder : MonoBehaviour
             row["TimeStamp"] = (i / vp.frameRate).ToString("F6");
             row["SocialPresence"] = scoresSP[i].ToString("F6");
             row["SocialConnection"] = scoresSC[i].ToString("F6");
-            row["SocialPresenceTimePoint"] = SPsManipulated[i].ToString();
-            row["SocialConnectionTimePoint"] = SCsManipulated[i].ToString();
             recorder.Add(row);
-
-            // vp.frame += 1;
-            // // StartCoroutine(PlayVideoPlayer());
             
             finishInfo.gameObject.SetActive(true);
             transform.parent.gameObject.SetActive(true);
@@ -168,7 +163,6 @@ public class VideoRecorder : MonoBehaviour
             scoresSP[i] = scoreSocialPresence.value;
         }
         
-        // vp.Pause();
     }
 
     public void CheckCompletion()

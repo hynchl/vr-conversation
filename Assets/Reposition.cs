@@ -14,6 +14,11 @@ public class Reposition : MonoBehaviour
         DoReposition();
     }
 
+    void OnEnable()
+    {
+        DoReposition();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -23,7 +28,7 @@ public class Reposition : MonoBehaviour
         }
     }
 
-    void DoReposition()
+    public void DoReposition()
     {
         Vector3 diff = target.position - current.position;
         foreach (Transform tf in itemsToMove)

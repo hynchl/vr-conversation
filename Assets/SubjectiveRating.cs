@@ -9,7 +9,7 @@ public class SubjectiveRating : MonoBehaviour
     [SerializeField]
     string fileName;
 
-    public Button submitButton;
+    // public Button submitButton;
     
     public Dictionary<string, string> ratings;
     // Start is called before the first frame update
@@ -26,7 +26,7 @@ public class SubjectiveRating : MonoBehaviour
         string name = sliderContent.variableName;
         ratings[name] = sliderContent.slider.value.ToString("F4");
 
-        if (ratings.Count >= 24) submitButton.interactable = true;
+        // if (ratings.Count >= 24) submitButton.interactable = true;
 
     }
 

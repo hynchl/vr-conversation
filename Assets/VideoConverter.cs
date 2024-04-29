@@ -17,6 +17,19 @@ public class VideoConverter : MonoBehaviour
     
     void Start()
     {
+        string directoryPath = @"C:\Program Files\obs-studio\bin\64bit";
+        string programPath = @"obs64.exe";
+
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            WorkingDirectory = directoryPath,
+            FileName = "cmd.exe",
+            Arguments = $"/c start \"\" \"{programPath}\""
+        };
+
+        Process.Start(startInfo);
+
+
         // Find the latest MKV file.
         latestMkvFile = Directory.GetFiles(folderPath, "*.mkv")
             .OrderByDescending(f => new FileInfo(f).CreationTime)
@@ -45,6 +58,7 @@ public class VideoConverter : MonoBehaviour
             UnityEngine.Debug.LogError("No .mkv file found in the specified folder.");
         }
     }
+    
     
     private void ProcessExited(object sender, EventArgs e)
     {
