@@ -214,8 +214,8 @@ public class VideoRecorder : MonoBehaviour
         
         scoresSC[currentFrame] = scoreSocialConnection.value;
         SCsManipulated[currentFrame] = true;
-        scoresSP[currentFrame] = scoreSocialPresence.value;
-        SPsManipulated[currentFrame] = true;
+        // scoresSP[currentFrame] = scoreSocialPresence.value;
+        // SPsManipulated[currentFrame] = true;
         
         
         if (currentFrame + 1 >= scoresSC.Length) return;
@@ -227,13 +227,13 @@ public class VideoRecorder : MonoBehaviour
             if (currentFrame_ >= SCsManipulated.Length) break;
         }
         
-        currentFrame_ = currentFrame+1; // re-initialize
-        while (!SPsManipulated[currentFrame_]) {
-            scoresSP[currentFrame_] = scoreSocialPresence.value;
-            currentFrame_ += 1;
-            if (currentFrame_ >= SPsManipulated.Length) break;
-        }
-        
+        // currentFrame_ = currentFrame+1; // re-initialize
+        // while (!SPsManipulated[currentFrame_]) {
+        //     scoresSP[currentFrame_] = scoreSocialPresence.value;
+        //     currentFrame_ += 1;
+        //     if (currentFrame_ >= SPsManipulated.Length) break;
+        // }
+        //
         vp.Pause();
     }
     
