@@ -19,8 +19,8 @@ public class VideoRecorder : MonoBehaviour
     
     public float[] scoresSC;
     public bool[] SCsManipulated;
-    public float[] scoresSP;
-    public bool[] SPsManipulated;
+    // public float[] scoresSP;
+    // public bool[] SPsManipulated;
     public int[] binNumbers;
     public bool isDone;
     public long lastStartFrame;
@@ -102,9 +102,9 @@ public class VideoRecorder : MonoBehaviour
         }
         
         scoresSC = Enumerable.Repeat(-1f, (int)vp.frameCount).ToArray();
-        scoresSP = Enumerable.Repeat(-1f, (int)vp.frameCount).ToArray();
+        // scoresSP = Enumerable.Repeat(-1f, (int)vp.frameCount).ToArray();
         SCsManipulated = new bool[(int)vp.frameCount];
-        SPsManipulated = new bool[(int)vp.frameCount];
+        // SPsManipulated = new bool[(int)vp.frameCount];
         binNumbers = new int[(int)vp.frameCount];
 
         // binning
@@ -124,7 +124,7 @@ public class VideoRecorder : MonoBehaviour
             Dictionary<string, string> row = new Dictionary<string, string>();
             row["Frame"] = i.ToString();
             row["TimeStamp"] = (i / vp.frameRate).ToString("F6");
-            row["SocialPresence"] = scoresSP[i].ToString("F6");
+            // row["SocialPresence"] = scoresSP[i].ToString("F6");
             row["SocialConnection"] = scoresSC[i].ToString("F6");
             recorder.Add(row);
             
@@ -160,7 +160,7 @@ public class VideoRecorder : MonoBehaviour
         {
             if (binNumbers[i] != binNumber) continue;
             scoresSC[i] = scoreSocialConnection.value;
-            scoresSP[i] = scoreSocialPresence.value;
+            // scoresSP[i] = scoreSocialPresence.value;
         }
         
     }
@@ -182,8 +182,8 @@ public class VideoRecorder : MonoBehaviour
         
         scoresSC[currentFrame] = scoreSocialConnection.value;
         SCsManipulated[currentFrame] = true;
-        scoresSP[currentFrame] = scoreSocialPresence.value;
-        SPsManipulated[currentFrame] = true;
+        // scoresSP[currentFrame] = scoreSocialPresence.value;
+        // SPsManipulated[currentFrame] = true;
         
         
         if (currentFrame + 1 >= scoresSC.Length) return;
@@ -195,12 +195,12 @@ public class VideoRecorder : MonoBehaviour
             if (currentFrame_ >= SCsManipulated.Length) break;
         }
         
-        currentFrame_ = currentFrame+1; // re-initialize
-        while (!SPsManipulated[currentFrame_]) {
-            scoresSP[currentFrame_] = scoreSocialPresence.value;
-            currentFrame_ += 1;
-            if (currentFrame_ >= SPsManipulated.Length) break;
-        }
+        // currentFrame_ = currentFrame+1; // re-initialize
+        // while (!SPsManipulated[currentFrame_]) {
+        //     scoresSP[currentFrame_] = scoreSocialPresence.value;
+        //     currentFrame_ += 1;
+        //     if (currentFrame_ >= SPsManipulated.Length) break;
+        // }
         
         vp.Pause();
     }
