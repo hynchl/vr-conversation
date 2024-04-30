@@ -564,6 +564,34 @@ namespace RTC
             // dataChannel.Send(data);
         }
         
+        public string CheckMicrophone(string desiredMicrophoneName)
+        {
+            // 시스템에 연결된 모든 마이크를 가져옴
+            string[] microphoneNames = Microphone.devices;
+
+            // 마이크가 하나 이상 감지되는지 확인
+            if (microphoneNames.Length == 0)
+            {
+                // 마이크가 없는 경우 Assert로 오류 발생
+                Debug.LogError("No microphone detected!");
+                // 또는 다른 처리를 수행할 수도 있음
+                return null;
+            }
+
+            // 원하는 마이크 이름이 있는지 확인
+            if (microphoneNames.Contains(desiredMicrophoneName))
+            {
+                // 원하는 마이크가 있으면 해당 이름 반환
+                return desiredMicrophoneName;
+            }
+            else
+            {
+                // 원하는 마이크가 없으면 첫 번째 마이크 이름 반환
+                return microphoneNames[0];
+            }
+        }
+        
+        
         private void CaptureAudioStart()
         {
             if (!useMic)
@@ -580,7 +608,8 @@ namespace RTC
                 Debug.Log(mic);
             }
 
-            var deviceName = micName;
+            var deviceName = CheckMicrophone(micName);
+            micName = deviceName;
 // #if UNITY_EDITOR
 //             //var deviceName = "마이크 배열 (Realtek(R) Audio)"; //Microphone.devices[0]; //ad-hoc
 //             var deviceName = "Headset Microphone (Oculus Virtual Audio Device)";

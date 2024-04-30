@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ExpOperator : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class ExpOperator : MonoBehaviour
     private float tStart;
 
     public TMP_Text text;
+
+    public Image buttonBackground;
     
     // Start is called before the first frame update
     private void OnEnable()
@@ -20,6 +23,7 @@ public class ExpOperator : MonoBehaviour
             rec.enabled = true;
         }
 
+        buttonBackground.color = Color.red;
         tStart = Time.time;
     }
 
@@ -30,11 +34,16 @@ public class ExpOperator : MonoBehaviour
         {
             rec.enabled = false;
         }
+        text.text = "Status: Idle";
+        buttonBackground.color = Color.gray;
+
     }
+
 
     private void Update()
     {
         tElapsed = Time.time - tStart;
-        text.text = tElapsed.ToString("F1");
+        text.text = "Status: Recording\n" +
+                    $"Elapsed Time: {tElapsed:F1}";
     }
 }

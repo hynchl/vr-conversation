@@ -31,26 +31,30 @@ public class GameManager : MonoBehaviour
     public SampleAvatarEntity[] avatarEntities;
     
     public static GameManager instance = null;
-
     public GameObject expOperator;
     public GameObject[] preConversationObjects;
     public GameObject[] inConversationObjects;
     public RTC.Client3 client;
     
+    public bool useOBS = true;
     void Awake()
     {
 
         // Start OBS if it is not open
         string currentProcessname = System.Diagnostics.Process.GetCurrentProcess().ProcessName;
 
-        if (!IsProcessRunning("obs64"))
+        if (useOBS)
         {
-            StartOBS();
+            if (!IsProcessRunning("obs64"))
+            {
+                StartOBS();
+            }
+            else
+            {
+                UnityEngine.Debug.Log("Program is already running.");
+            }
         }
-        else
-        {
-            UnityEngine.Debug.Log("Program is already running.");
-        }
+
 
             
         Process[] p = Process.GetProcessesByName(currentProcessname);
