@@ -115,7 +115,7 @@ public class Recorder
         }
     }
 
-    void Clear() {
+    public void Clear() {
         rows.Clear();
     }
 }

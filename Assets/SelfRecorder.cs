@@ -96,9 +96,9 @@ public class SelfRecorder : ExpRecorder
             recorder.Save();
     }
     
-    private void OnDestroy()
-    {
-        if (recorder != null)
-            recorder.Save();
-    }
+    // private void OnDestroy()
+    // {
+    //     if (recorder != null)
+    //         recorder.Save();
+    // }
 }

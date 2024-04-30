@@ -398,6 +398,7 @@ namespace RTC
                     go.GetComponent<AudioSource>().SetTrack(audioTrack);
                     go.GetComponent<AudioSource>().loop = true;
                     go.GetComponent<AudioSource>().Play();
+                    
                     Log("An audioTrack was added.", go);
 
                     receivedAudios[dest] = go.GetComponent<AudioSource>();

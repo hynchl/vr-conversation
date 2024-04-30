@@ -86,12 +86,18 @@ public class RemoteRecorder : ExpRecorder
     private void OnDisable()
     {
         if (recorder != null)
+        {
             recorder.Save();
+            recorder.Clear();
+        }
     }
     
     private void OnDestroy()
     {
         if (recorder != null)
+        {
             recorder.Save();
+            recorder.Clear();
+        }
     }
 }
