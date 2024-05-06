@@ -9858,13 +9858,9 @@ PrefabInstance:
       value: "\uC774 \uC2E4\uD5D8\uC5D0\uC11C \uC5EC\uB7EC\uBD84\uC740 \uC0C1\uB300\uBC29\uACFC
         10\uBD84\uAC04 \uC790\uC720\uB85C\uC6B4 \uB300\uD654\uB97C \uB098\uB208 \uB4A4,
         \uB179\uD654\uB41C \uB300\uD654 \uB0B4\uC6A9\uC744 \uC2DC\uCCAD\uD558\uBA74\uC11C
-        \uB300\uD654\uC5D0\uC11C \uB290\uB080 \uC0AC\uD68C\uC801 \uC5F0\uACB0\uAC10\uACFC
-        \uC0AC\uD68C\uC801 \uACF5\uC874\uAC10\uC744 \uD3C9\uAC00\uD558\uAC8C \uB429\uB2C8\uB2E4.
-        \uC0AC\uD68C\uC801 \uC5F0\uACB0\uAC10\uC740 \uB098\uC640 \uC0C1\uB300\uBC29\uC774
-        \uC9C4\uC815\uC73C\uB85C \uAD50\uB958\uD558\uACE0 \uC788\uB2E4\uACE0 \uB290\uB07C\uB294
-        \uAC10\uAC01\uC774\uBA70, \uC0AC\uD68C\uC801 \uACF5\uC874\uAC10\uC740 \uAC19\uC740
-        \uC7A5\uC18C\uC5D0 \uC788\uB294 \uAC83 \uAC19\uB2E4\uACE0 \uB290\uAEF4\uC9C0\uB294
-        \uAC10\uAC01\uC785\uB2C8\uB2E4."
+        \uB300\uD654\uC5D0\uC11C \uB290\uAF08\uB358 \uACBD\uD5D8\uC744 \uD3C9\uAC00\uD558\uAC8C
+        \uB429\uB2C8\uB2E4. \uB0B4\uC6A9\uC744 \uC219\uC9C0\uD558\uC168\uC73C\uBA74
+        [\uD655\uC778] \uBC84\uD2BC\uC744 \uB20C\uB7EC\uC8FC\uC138\uC694."
       objectReference: {fileID: 0}
     - target: {fileID: 2859147190401906338, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_Maskable
@@ -10112,7 +10108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2859147191209390392, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2859147191209390399, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_AnchorMax.y
