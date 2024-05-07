@@ -17,17 +17,17 @@ public class VideoConverter : MonoBehaviour
     
     void Start()
     {
-        string directoryPath = @"C:\Program Files\obs-studio\bin\64bit";
-        string programPath = @"obs64.exe";
-
-        ProcessStartInfo startInfo = new ProcessStartInfo
-        {
-            WorkingDirectory = directoryPath,
-            FileName = "cmd.exe",
-            Arguments = $"/c start \"\" \"{programPath}\""
-        };
-
-        Process.Start(startInfo);
+        // string directoryPath = @"C:\Program Files\obs-studio\bin\64bit";
+        // string programPath = @"obs64.exe";
+        //
+        // ProcessStartInfo startInfo = new ProcessStartInfo
+        // {
+        //     WorkingDirectory = directoryPath,
+        //     FileName = "cmd.exe",
+        //     Arguments = $"/c start \"\" \"{programPath}\""
+        // };
+        //
+        // Process.Start(startInfo);
 
 
         // Find the latest MKV file.

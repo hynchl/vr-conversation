@@ -9,6 +9,8 @@ public class SubjectiveRating : MonoBehaviour
     [SerializeField]
     string fileName;
 
+    public GameObject ratingSliderContentWrapper;
+    
     // public Button submitButton;
     
     public Dictionary<string, string> ratings;
@@ -19,6 +21,13 @@ public class SubjectiveRating : MonoBehaviour
         recorder = new Recorder("Data/" + fileName + ".tsv");
         ratings = new Dictionary<string, string>();
         ratings["session"] = PlayerPrefs.GetString("Name", "Test"+Random.Range(1000,2000).ToString())+"_post_conversation";
+
+
+        RatingSliderContent[] rscs = ratingSliderContentWrapper.GetComponentsInChildren<RatingSliderContent>();
+        foreach (RatingSliderContent rsc in rscs)
+        {
+            ratings[rsc.variableName] = 0.ToString("F4");
+        }
     }
 
     public void AddData(RatingSliderContent sliderContent)

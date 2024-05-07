@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &267732168
@@ -6557,7 +6557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1031470574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7627,6 +7627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: 
+  ratingSliderContentWrapper: {fileID: 8279672054096068968}
 --- !u!4 &1153133420
 Transform:
   m_ObjectHideFlags: 0
@@ -11586,7 +11587,7 @@ PrefabInstance:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionKor
       value: "\uC0C1\uB300\uBC29\uC758 \uC544\uBC14\uD0C0\uC758 \uC81C\uC2A4\uCC98\uAC00
-        \uC2E4\uC81C \uC0AC\uB78C\uC758 \uC81C\uC2A4\uCC98\uB7FC \uBCF4\uC600\uB2E4.\r"
+        \uC2E4\uC81C \uC0AC\uB78C\uC758 \uC81C\uC2A4\uCC98\uCC98\uB7FC \uBCF4\uC600\uB2E4.\r"
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: variableName
@@ -13596,7 +13597,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1801907766
