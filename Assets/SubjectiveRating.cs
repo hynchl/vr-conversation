@@ -41,11 +41,8 @@ public class SubjectiveRating : MonoBehaviour
 
     public void Save()
     {
-        if (ratings.Count >= 24)
-        {
             recorder.Add(ratings);
             recorder.Save();    
-        }
 
     }
 }
