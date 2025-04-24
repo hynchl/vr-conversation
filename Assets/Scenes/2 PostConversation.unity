@@ -881,8 +881,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionKor
-      value: "\uB098\uB294 \uB0B4 \uC2A4\uD130\uB514 \uD30C\uD2B8\uB108\uB97C \uBB34\uC2DC\uD558\uB294
-        \uACBD\uD5A5\uC774 \uC788\uC5C8\uB2E4.\r\n"
+      value: "\uB098\uB294 \uC0C1\uB300\uBC29\uC744 \uBB34\uC2DC\uD558\uB294 \uACBD\uD5A5\uC774
+        \uC788\uC5C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: variableName
@@ -8457,8 +8457,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionKor
-      value: "\uB2E4\uB978 \uC77C\uC774 \uBC8C\uC5B4\uC9C8 \uB54C \uB098\uB294 \uB0B4
-        \uC2A4\uD130\uB514 \uD30C\uD2B8\uB108\uB85C\uBD80\uD130 \uC27D\uAC8C \uC0B0\uB9CC\uD574\uC84C\uB2E4.\r\n"
+      value: "\uC0C1\uB300\uBC29\uC740 \uB2E4\uB978 \uC77C\uC774 \uBC8C\uC5B4\uC9C8
+        \uB54C \uB098\uB85C\uBD80\uD130 \uC27D\uAC8C \uC0B0\uB9CC\uD574\uC84C\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: variableName
@@ -9389,8 +9389,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionKor
-      value: "\uB0B4 \uC2A4\uD130\uB514 \uD30C\uD2B8\uB108\uB294 \uB098\uB97C \uBB34\uC2DC\uD558\uB294
-        \uACBD\uD5A5\uC774 \uC788\uC5C8\uB2E4.\r"
+      value: "\uC0C1\uB300\uBC29\uC740 \uB098\uB97C \uBB34\uC2DC\uD558\uB294 \uACBD\uD5A5\uC774
+        \uC788\uC5C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: variableName
@@ -10346,8 +10346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionKor
-      value: "\uB0B4 \uC2A4\uD130\uB514 \uD30C\uD2B8\uB108\uB294 \uB098\uC5D0\uAC8C
-        \uC8FC\uC758\uB97C \uAE30\uC6B8\uC600\uB2E4."
+      value: "\uC0C1\uB300\uBC29\uC740 \uB098\uC5D0\uAC8C \uC8FC\uC758\uB97C \uAE30\uC6B8\uC600\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: variableName
@@ -12119,8 +12118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionKor
-      value: "\uB098\uB294 \uB0B4 \uC2A4\uD130\uB514 \uD30C\uD2B8\uB108\uC5D0\uAC8C
-        \uC8FC\uC758\uB97C \uAE30\uC6B8\uC600\uB2E4."
+      value: "\uB098\uB294 \uC0C1\uB300\uBC29\uC5D0\uAC8C \uC8FC\uC758\uB97C \uAE30\uC6B8\uC600\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: variableName
@@ -14985,8 +14983,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionKor
-      value: "\uB2E4\uB978 \uC77C\uC774 \uBC8C\uC5B4\uC9C8 \uB54C \uB0B4 \uC2A4\uD130\uB514
-        \uD30C\uD2B8\uB108\uB85C\uBD80\uD130 \uC27D\uAC8C \uC0B0\uB9CC\uD574\uC84C\uB2E4.\r\n"
+      value: "\uB098\uB294 \uB2E4\uB978 \uC77C\uC774 \uBC8C\uC5B4\uC9C8 \uB54C \uC0C1\uB300\uBC29\uC73C\uB85C\uBD80\uD130
+        \uC27D\uAC8C \uC0B0\uB9CC\uD574\uC84C\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: variableName
