@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public GameObject expOperator;
     public GameObject[] preConversationObjects;
     public GameObject[] inConversationObjects;
-    public RTC.Client3 client;
+    public RTC.Client client;
     
     public bool useOBS = true;
     void Awake()

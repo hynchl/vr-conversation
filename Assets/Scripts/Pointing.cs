@@ -19,11 +19,10 @@ public class Pointing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // origin forward 방향으로 
         Debug.DrawRay(origin.position, -origin.right, Color.magenta);
         
         RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
+
         if (Physics.Raycast(origin.position, -origin.right, out hit, Mathf.Infinity, layerMask))
         {
             Debug.DrawRay(origin.position, -origin.right * hit.distance, Color.yellow);

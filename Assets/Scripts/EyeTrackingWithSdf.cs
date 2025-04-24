@@ -27,17 +27,12 @@ public class EyeTrackingWithSdf : MonoBehaviour
     [SerializeField] UnityEvent<RenderTexture> _sdfTextureEvent = new UnityEvent<RenderTexture>();
     ScalarTextureToSdfTextureProcedure sdfGenerator;
 
-    
-    // public Vector2 screenPosition;
-    // public GameObject wall;
-    //
+
     private Camera cam;
     private RenderTexture rt;
     private RenderTexture rtCubemap;
     
-    // public LayerMask layerMask;
-    // public Color color;
-    // // public Transform eye;
+
     public float value;
     
     void Awake()
@@ -46,7 +41,7 @@ public class EyeTrackingWithSdf : MonoBehaviour
         rt = cam.targetTexture;
         
         tempRt = new RenderTexture(rt.width, rt.height, 0, RenderTextureFormat.ARGB32);
-        tempRt.enableRandomWrite = true; // Enable UAV usage
+        tempRt.enableRandomWrite = true;
         tempRt.Create();
         value = 1f;
     }
@@ -76,11 +71,6 @@ public class EyeTrackingWithSdf : MonoBehaviour
     
     void Update()
     {
-        // if (imageType == ImageType.Spherical)
-        // {
-        //     cam.RenderToCubemap(rtCubemap);
-        //     rtCubemap.ConvertToEquirect(rt, Camera.MonoOrStereoscopicEye.Mono);
-        // }
         
         int kernelHandle = binaryImageShader.FindKernel("CSMain");
         
@@ -92,29 +82,10 @@ public class EyeTrackingWithSdf : MonoBehaviour
         
         binaryImageShader.Dispatch(kernelHandle, rt.width / (int)threadGroupX, rt.height / (int)threadGroupY, 1);
         
-        // 이게 결국 On RenderImage로 옮겨가야함 
+
         sdfGenerator.Update( tempRt, _sourceValueThreshold, _downSampling, _precision, _addBorders, _showSource );
         _sdfTextureEvent.Invoke(sdfGenerator.sdfTexture );
-        
-        // 카메라 위치에서 마우스 클릭 지점으로 Ray를 쏩니다.
-        // 카메라 위치에서 rayDirection 방향으로 Ray를 쏩니다.
-        // Ray ray = new Ray(cam.transform.position, eye.forward);
-        //
-        // // Raycast 정보를 저장할 변수
-        // RaycastHit hitInfo;
-        //
-        // // Ray가 충돌한 경우
-        // if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask))
-        // {
-        //     // 충돌한 대상 오브젝트의 정보 출력
-        //     // Debug.Log("Hit object: " + hitInfo.collider.gameObject.name);
-        //     // Debug.Log("Hit point: " + hitInfo.point);
-        // }
-        //
-        // // Ray를 Debug.DrawRay를 사용하여 그립니다.
-        // Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 2f);
-        //
-        // screenPosition = cam.WorldToViewportPoint(hitInfo.point);
+
 
         RenderTexture current = RenderTexture.active;
         
@@ -127,7 +98,7 @@ public class EyeTrackingWithSdf : MonoBehaviour
         RenderTexture.active = current;
         Destroy(tex);
         tex = null;
-        // value = color.r; // 이 값이 왜 음수가 안나오니;
+
     }
 
     private void LateUpdate()
@@ -138,6 +109,5 @@ public class EyeTrackingWithSdf : MonoBehaviour
     private void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
         Graphics.Blit(src, dest);
-        // Graphics.Blit(sdfGenerator.sdfTexture, dest);
     }
 }

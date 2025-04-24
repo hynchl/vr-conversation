@@ -169,28 +169,3 @@ def script_defaults(settings):
 	obs.obs_data_set_default_string(settings, "name", "Set Your Name")
 	obs.obs_data_set_default_string(settings, "path", "Set Your Path")
 
-# def script_load(settings):
-# 	# 새로운 텍스트 소스를 생성
-#     text_source = obs.obs_source_create("text_gdiplus", "Time", None, None)
-#     if text_source is None:
-#         print("Failed to create text source")
-#         return
-
-    # 텍스트 설정
-    # settings = obs.obs_data_create()
-    # obs.obs_data_set_string(settings, "text", "Current Time: {}".format(time.time()))
-    # obs.obs_source_update(text_source, settings)
-    # obs.obs_data_release(settings)
-
-    # 텍스트 소스를 추가할 미디어 소스를 찾음
-    # scene = obs.obs_frontend_get_current_scene()
-    # scene = obs.obs_scene_from_source(scene)
-    # source = obs.obs_scene_find_source(scene, "장면")
-
-	# 텍스트 소스를 추가
-    # if source is not None:
-    #     obs.obs_scene_add(scene, text_source)
-    #     obs.obs_sceneitem_set_pos(obs.obs_scene_find_scene_item(scene, text_source), 50, 50)
-    #     obs.obs_source_release(source)
-    # else:
-    #     print("Failed to find scene source")

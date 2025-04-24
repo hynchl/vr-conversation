@@ -248,7 +248,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB9E4\uC6B0 \uC57D\uD568\n(0)"
+  m_text: 'Very weak
+
+    (0)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8822c9a3211e47f4a89603ebef4f30c8, type: 2}
   m_sharedMaterial: {fileID: -6606138364567073777, guid: 8822c9a3211e47f4a89603ebef4f30c8, type: 2}
@@ -638,7 +640,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -871,7 +873,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -1254,7 +1256,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -1759,7 +1761,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -2008,7 +2010,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -2264,7 +2266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &338584096
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2584,7 +2586,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -3005,7 +3007,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -3760,7 +3762,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -4503,7 +4505,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -4759,7 +4761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &690926309
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4994,7 +4996,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -5245,7 +5247,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -5856,7 +5858,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -6748,7 +6750,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -6997,7 +6999,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -7283,7 +7285,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -7653,7 +7655,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -7986,9 +7988,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC9C0\uB09C 30\uCD08 \uAD6C\uAC04\uC5D0\uC11C \uB290\uAF08\uB358 \uC0AC\uD68C\uC801
-    \uC5F0\uACB0\uAC10\uC744 \uD3C9\uAC00\uD558\uACE0 \uD655\uC778 \uBC84\uD2BC\uC744
-    \uB204\uB974\uC138\uC694."
+  m_text: Please rate the level of social connection you felt during the past 30
+    seconds, then press the [Confirm] button.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8822c9a3211e47f4a89603ebef4f30c8, type: 2}
   m_sharedMaterial: {fileID: -6606138364567073777, guid: 8822c9a3211e47f4a89603ebef4f30c8, type: 2}
@@ -8445,7 +8446,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -8704,7 +8705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1279145159
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9040,7 +9041,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -9380,7 +9381,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -10337,7 +10338,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -10633,7 +10634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB2E4\uC2DC\uBCF4\uAE30"
+  m_text: Replay
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8822c9a3211e47f4a89603ebef4f30c8, type: 2}
   m_sharedMaterial: {fileID: -6606138364567073777, guid: 8822c9a3211e47f4a89603ebef4f30c8, type: 2}
@@ -11198,7 +11199,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -11578,7 +11579,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -12110,7 +12111,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -12616,7 +12617,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -12865,7 +12866,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -13190,7 +13191,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -13791,7 +13792,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -14089,7 +14090,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB9E4\uC6B0 \uAC15\uD568\n(100)"
+  m_text: 'Very strong
+
+    (100)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8822c9a3211e47f4a89603ebef4f30c8, type: 2}
   m_sharedMaterial: {fileID: -6606138364567073777, guid: 8822c9a3211e47f4a89603ebef4f30c8, type: 2}
@@ -14176,7 +14179,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -14430,7 +14433,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -14794,7 +14797,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD655\uC778"
+  m_text: Confirm
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8822c9a3211e47f4a89603ebef4f30c8, type: 2}
   m_sharedMaterial: {fileID: -6606138364567073777, guid: 8822c9a3211e47f4a89603ebef4f30c8, type: 2}
@@ -14973,7 +14976,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -15270,7 +15273,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0AC\uD68C\uC801 \uC5F0\uACB0\uAC10"
+  m_text: Social Connection
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8822c9a3211e47f4a89603ebef4f30c8, type: 2}
   m_sharedMaterial: {fileID: -6606138364567073777, guid: 8822c9a3211e47f4a89603ebef4f30c8, type: 2}
@@ -15357,7 +15360,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -16150,7 +16153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng
@@ -16499,7 +16502,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: language
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 25364181313571301, guid: 3ee9000e93e8f0840b690c331a07e949, type: 3}
       propertyPath: questionEng

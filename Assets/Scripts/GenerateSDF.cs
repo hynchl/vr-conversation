@@ -71,7 +71,6 @@ public class GenerateSDF : MonoBehaviour
         
         Graphics.Blit(tempRt, dest);
         
-        // 이게 결국 On RenderImage로 옮겨가야함 
         sdfGenerator.Update( tempRt, _sourceValueThreshold, _downSampling, _precision, _addBorders, _showSource );
         _sdfTextureEvent.Invoke(sdfGenerator.sdfTexture );
     }
